@@ -158,5 +158,26 @@
     "offline": "⚫ Offline",
     "identified": "Identified",
     "unknown": "Unknown"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": {
+      "title": "Language",
+      "description": "Choose your preferred language for the interface",
+      "currentLanguage": "Current Language",
+      "changeLanguage": "Click to change language"
+    },
+    "account": {
+      "title": "Account Information",
+      "description": "Your account details and information",
+      "email": "Email Address",
+      "userId": "User ID"
+    },
+    "app": {
+      "title": "Application Information",
+      "description": "Information about this application",
+      "name": "Application Name",
+      "version": "Version"
+    }
   }
 }
