@@ -12,6 +12,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function useTheme() {
   const context = useContext(ThemeContext);
+  console.log('🎯 useTheme called, context:', context ? 'found' : 'undefined');
   if (context === undefined) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
@@ -26,11 +27,18 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>('system');
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
 
+  console.log('🚀 ThemeProvider initialized with theme:', theme, 'resolvedTheme:', resolvedTheme);
+
   // Load theme from localStorage on mount
   useEffect(() => {
+    console.log('📱 Loading theme from localStorage...');
     const savedTheme = localStorage.getItem('theme') as Theme;
+    console.log('💾 Saved theme:', savedTheme);
     if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
+      console.log('✅ Setting saved theme:', savedTheme);
       setTheme(savedTheme);
+    } else {
+      console.log('🔄 Using default theme: system');
     }
   }, []);
 
@@ -56,10 +64,15 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   // Update resolved theme when theme changes
   useEffect(() => {
+    console.log('🔄 Theme resolution:', { theme });
+    
     if (theme === 'system') {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      setResolvedTheme(mediaQuery.matches ? 'dark' : 'light');
+      const systemTheme = mediaQuery.matches ? 'dark' : 'light';
+      console.log('🖥️ System theme detected:', { systemPrefersDark: mediaQuery.matches, resolvedTo: systemTheme });
+      setResolvedTheme(systemTheme);
     } else {
+      console.log('🎯 Direct theme set:', theme);
       setResolvedTheme(theme);
     }
   }, [theme]);
@@ -68,11 +81,20 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   useEffect(() => {
     const root = document.documentElement;
     
+    console.log('🎨 Theme change:', { theme, resolvedTheme });
+    console.log('📄 Document classes before:', root.classList.toString());
+    
     if (resolvedTheme === 'dark') {
       root.classList.add('dark');
+      console.log('✅ Added dark class to document');
     } else {
       root.classList.remove('dark');
+      console.log('❌ Removed dark class from document');
     }
+    
+    console.log('📄 Document classes after:', root.classList.toString());
+    console.log('🔍 Dark class present:', root.classList.contains('dark'));
+    console.log('🔍 HTML element:', root);
   }, [resolvedTheme]);
 
   // Save theme to localStorage
