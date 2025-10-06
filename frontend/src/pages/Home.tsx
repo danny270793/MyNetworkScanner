@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { getNetworks, createNetwork, updateNetwork, deleteNetwork, type Network } from '../lib/networks';
 import NetworkModal from '../components/NetworkModal';
 import DeleteConfirmModal from '../components/DeleteConfirmModal';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 export default function Home() {
+  const { t } = useTranslation();
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
   
@@ -99,18 +102,19 @@ export default function Home() {
                 Network Scanner
               </h1>
             </div>
-            <div className="flex items-center space-x-4">
-              <div className="hidden sm:flex items-center space-x-2 bg-gray-100 rounded-lg px-4 py-2">
-                <span className="text-gray-400">👤</span>
-                <span className="text-sm font-medium text-gray-700">{user?.email}</span>
-              </div>
-              <button
-                onClick={handleSignOut}
-                className="bg-gradient-to-r from-red-500 to-pink-500 text-white font-medium px-4 py-2 rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
-              >
-                Sign Out
-              </button>
-            </div>
+                   <div className="flex items-center space-x-4">
+                     <LanguageSwitcher />
+                     <div className="hidden sm:flex items-center space-x-2 bg-gray-100 rounded-lg px-4 py-2">
+                       <span className="text-gray-400">👤</span>
+                       <span className="text-sm font-medium text-gray-700">{user?.email}</span>
+                     </div>
+                     <button
+                       onClick={handleSignOut}
+                       className="bg-gradient-to-r from-red-500 to-pink-500 text-white font-medium px-4 py-2 rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+                     >
+                       {t('auth.signOut')}
+                     </button>
+                   </div>
           </div>
         </div>
       </nav>
@@ -119,16 +123,16 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Header Section */}
         <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-4xl font-bold text-gray-900">My Networks 🌐</h2>
-            <p className="text-gray-600 mt-2">Manage your network configurations</p>
-          </div>
+                 <div>
+                   <h2 className="text-4xl font-bold text-gray-900">{t('networks.title')} 🌐</h2>
+                   <p className="text-gray-600 mt-2">{t('networks.subtitle')}</p>
+                 </div>
           <button
             onClick={handleCreateClick}
             className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center space-x-2"
           >
             <span className="text-xl">➕</span>
-            <span>Create Network</span>
+            <span>{t('networks.createNetwork')}</span>
           </button>
         </div>
 
