@@ -7,6 +7,8 @@ export interface Device {
   mac: string;
   name?: string;
   brand?: string;
+  state: 'online' | 'offline';
+  last_seen?: string;
   created_at: string;
   updated_at?: string;
 }
@@ -17,6 +19,8 @@ export interface CreateDeviceDto {
   mac: string;
   name?: string;
   brand?: string;
+  state?: 'online' | 'offline';
+  last_seen?: string;
 }
 
 export interface UpdateDeviceDto {
@@ -24,6 +28,8 @@ export interface UpdateDeviceDto {
   mac?: string;
   name?: string;
   brand?: string;
+  state?: 'online' | 'offline';
+  last_seen?: string;
 }
 
 // Get all devices for a specific network
@@ -82,5 +88,24 @@ export async function deleteDevice(id: string): Promise<void> {
   if (error) {
     throw new Error(error.message);
   }
+}
+
+// Update device state (online/offline)
+export async function updateDeviceState(id: string, state: 'online' | 'offline'): Promise<Device> {
+  const { data, error } = await supabase
+    .from('devices')
+    .update({ 
+      state,
+      last_seen: state === 'online' ? new Date().toISOString() : undefined
+    })
+    .eq('id', id)
+    .select()
+    .single();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
 }
 
