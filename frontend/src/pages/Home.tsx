@@ -85,52 +85,64 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      {/* Modern Navigation Bar */}
-      <nav className="bg-white/80 backdrop-blur-xl border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-3">
-              <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-2 rounded-xl shadow-lg">
-                <span className="text-2xl">🌐</span>
+      {/* Mobile-First Navigation Bar */}
+      <nav className="bg-white/90 backdrop-blur-xl border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div className="px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-14 sm:h-16">
+            {/* Logo and Title */}
+            <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+              <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg">
+                <span className="text-lg sm:text-2xl">🌐</span>
               </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <h1 className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent truncate">
                 Network Scanner
               </h1>
             </div>
-                   <div className="flex items-center space-x-4">
-                    <div className="hidden sm:flex items-center space-x-2 bg-gray-100 rounded-lg px-4 py-2">
-                       <span className="text-gray-400">👤</span>
-                       <span className="text-sm font-medium text-gray-700">{user?.email}</span>
-                     </div>
-                     <button
-                       onClick={() => navigate('/settings')}
-                       className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all duration-200"
-                       title={t('settings.title')}
-                     >
-                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                       </svg>
-                     </button>
-                   </div>
+            
+            {/* Mobile Actions */}
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              {/* User Info - Mobile */}
+              <div className="sm:hidden flex items-center space-x-1 bg-gray-100 rounded-lg px-2 py-1.5">
+                <span className="text-gray-400 text-sm">👤</span>
+                <span className="text-xs font-medium text-gray-700 truncate max-w-20">
+                  {user?.email?.split('@')[0]}
+                </span>
+              </div>
+              
+              {/* Settings Button */}
+              <button
+                onClick={() => navigate('/settings')}
+                className="p-2 sm:p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all duration-200 touch-manipulation"
+                title={t('settings.title')}
+              >
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* Header Section */}
-        <div className="flex items-center justify-between">
-                 <div>
-                   <h2 className="text-4xl font-bold text-gray-900">{t('networks.title')} 🌐</h2>
-                   <p className="text-gray-600 mt-2">{t('networks.subtitle')}</p>
-                 </div>
+      {/* Main Content - Mobile First */}
+      <main className="px-4 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-6 sm:space-y-8">
+        {/* Header Section - Mobile Optimized */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
+          <div className="flex-1 min-w-0">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+              {t('networks.title')} 🌐
+            </h2>
+            <p className="text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">
+              {t('networks.subtitle')}
+            </p>
+          </div>
           <button
             onClick={handleCreateClick}
-            className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center space-x-2"
+            className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold px-4 sm:px-6 py-3 sm:py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-2 touch-manipulation"
           >
-            <span className="text-xl">➕</span>
-            <span>{t('networks.createNetwork')}</span>
+            <span className="text-lg sm:text-xl">➕</span>
+            <span className="text-sm sm:text-base">{t('networks.createNetwork')}</span>
           </button>
         </div>
 
@@ -168,76 +180,76 @@ export default function Home() {
               Create Your First Network
             </button>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {networks.map((network) => (
-              <div
-                key={network.id}
-                className="group bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
-              >
-                {/* Clickable card content */}
-                <div 
-                  onClick={() => navigate(`/network/${network.id}`)}
-                  className="cursor-pointer mb-4"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-2 rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300">
-                        <span className="text-2xl">🌐</span>
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
-                          {network.name}
-                        </h3>
-                        {network.ip_range && (
-                          <p className="text-sm text-indigo-600 font-mono">{network.ip_range}</p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
+               ) : (
+                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                   {networks.map((network) => (
+                     <div
+                       key={network.id}
+                       className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 touch-manipulation"
+                     >
+                       {/* Clickable card content - Mobile Optimized */}
+                       <div 
+                         onClick={() => navigate(`/network/${network.id}`)}
+                         className="cursor-pointer mb-3 sm:mb-4"
+                       >
+                         <div className="flex items-start justify-between mb-3 sm:mb-4">
+                           <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+                             <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                               <span className="text-lg sm:text-2xl">🌐</span>
+                             </div>
+                             <div className="min-w-0 flex-1">
+                               <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors truncate">
+                                 {network.name}
+                               </h3>
+                               {network.ip_range && (
+                                 <p className="text-xs sm:text-sm text-indigo-600 font-mono truncate">{network.ip_range}</p>
+                               )}
+                             </div>
+                           </div>
+                         </div>
 
-                  {network.description && (
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{network.description}</p>
-                  )}
+                         {network.description && (
+                           <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 leading-relaxed">{network.description}</p>
+                         )}
 
-                  <div className="text-xs text-gray-500">
-                    Created: {new Date(network.created_at).toLocaleDateString()}
-                  </div>
-                </div>
+                         <div className="text-xs text-gray-500">
+                           {t('networks.created')}: {new Date(network.created_at).toLocaleDateString()}
+                         </div>
+                       </div>
 
-                {/* Action buttons */}
-                <div className="flex space-x-2 pt-4 border-t border-gray-200">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      navigate(`/network/${network.id}`);
-                    }}
-                    className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-2 rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-1"
-                  >
-                    <span>👁️</span>
-                    <span>View</span>
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleEditClick(network);
-                    }}
-                    className="flex-1 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-2 rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-1"
-                  >
-                    <span>✏️</span>
-                    <span>Edit</span>
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleDeleteClick(network);
-                    }}
-                    className="flex-1 bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold py-2 rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-1"
-                  >
-                    <span>🗑️</span>
-                    <span>Delete</span>
-                  </button>
-                </div>
+                       {/* Action buttons - Mobile Optimized */}
+                       <div className="flex space-x-1 sm:space-x-2 pt-3 sm:pt-4 border-t border-gray-200">
+                         <button
+                           onClick={(e) => {
+                             e.stopPropagation();
+                             navigate(`/network/${network.id}`);
+                           }}
+                           className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-2 sm:py-2 rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-1 touch-manipulation"
+                         >
+                           <span className="text-sm sm:text-base">👁️</span>
+                           <span className="text-xs sm:text-sm">{t('networks.view')}</span>
+                         </button>
+                         <button
+                           onClick={(e) => {
+                             e.stopPropagation();
+                             handleEditClick(network);
+                           }}
+                           className="flex-1 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-2 sm:py-2 rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-1 touch-manipulation"
+                         >
+                           <span className="text-sm sm:text-base">✏️</span>
+                           <span className="text-xs sm:text-sm">{t('networks.edit')}</span>
+                         </button>
+                         <button
+                           onClick={(e) => {
+                             e.stopPropagation();
+                             handleDeleteClick(network);
+                           }}
+                           className="flex-1 bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold py-2 sm:py-2 rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-1 touch-manipulation"
+                         >
+                           <span className="text-sm sm:text-base">🗑️</span>
+                           <span className="text-xs sm:text-sm">{t('networks.delete')}</span>
+                         </button>
+                       </div>
               </div>
             ))}
           </div>
