@@ -16,10 +16,8 @@ async function main() {
         console.log(`\n📊 Found ${devices.length} device(s)\n`);
         
         if (devices.length > 0) {
-            console.log('📤 Uploading to Supabase...');
             await backend.uploadDevices(devices);
             
-            console.log('✅ Successfully uploaded devices to Supabase!');
             console.log('─'.repeat(40));
             console.log(
                 'IP Address'.padEnd(18) + 
