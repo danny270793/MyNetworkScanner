@@ -173,38 +173,63 @@ export default function Home() {
                 key={network.id}
                 className="group bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-2 rounded-xl shadow-md">
-                      <span className="text-2xl">🌐</span>
+                {/* Clickable card content */}
+                <div 
+                  onClick={() => navigate(`/network/${network.id}`)}
+                  className="cursor-pointer mb-4"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center space-x-3">
+                      <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-2 rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300">
+                        <span className="text-2xl">🌐</span>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                          {network.name}
+                        </h3>
+                        {network.ip_range && (
+                          <p className="text-sm text-indigo-600 font-mono">{network.ip_range}</p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900">{network.name}</h3>
-                      {network.ip_range && (
-                        <p className="text-sm text-indigo-600 font-mono">{network.ip_range}</p>
-                      )}
-                    </div>
+                  </div>
+
+                  {network.description && (
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{network.description}</p>
+                  )}
+
+                  <div className="text-xs text-gray-500">
+                    Created: {new Date(network.created_at).toLocaleDateString()}
                   </div>
                 </div>
 
-                {network.description && (
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{network.description}</p>
-                )}
-
-                <div className="text-xs text-gray-500 mb-4">
-                  Created: {new Date(network.created_at).toLocaleDateString()}
-                </div>
-
-                <div className="flex space-x-2">
+                {/* Action buttons */}
+                <div className="flex space-x-2 pt-4 border-t border-gray-200">
                   <button
-                    onClick={() => handleEditClick(network)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(`/network/${network.id}`);
+                    }}
+                    className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-2 rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-1"
+                  >
+                    <span>👁️</span>
+                    <span>View</span>
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEditClick(network);
+                    }}
                     className="flex-1 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-2 rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-1"
                   >
                     <span>✏️</span>
                     <span>Edit</span>
                   </button>
                   <button
-                    onClick={() => handleDeleteClick(network)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteClick(network);
+                    }}
                     className="flex-1 bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold py-2 rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-1"
                   >
                     <span>🗑️</span>
