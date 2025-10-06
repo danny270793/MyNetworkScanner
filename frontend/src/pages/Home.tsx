@@ -8,7 +8,7 @@ import DeleteConfirmModal from '../components/DeleteConfirmModal';
 
 export default function Home() {
   const { t } = useTranslation();
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   
   const [networks, setNetworks] = useState<Network[]>([]);
@@ -23,10 +23,6 @@ export default function Home() {
   const [networkToDelete, setNetworkToDelete] = useState<Network | null>(null);
   const [deleting, setDeleting] = useState(false);
 
-  const handleSignOut = async () => {
-    await signOut();
-    navigate('/login');
-  };
 
   const loadNetworks = async () => {
     try {
