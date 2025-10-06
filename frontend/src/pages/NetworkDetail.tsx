@@ -86,7 +86,6 @@ export default function NetworkDetail() {
               className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
             >
               <span className="text-xl">←</span>
-              <span className="font-medium">Back to Networks</span>
             </button>
             <div className="flex items-center space-x-3">
               <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-2 rounded-xl shadow-lg">
