@@ -113,6 +113,43 @@ export default function NetworkDetail() {
           </div>
         )}
 
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="flex items-center space-x-3 mb-2">
+              <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-2 rounded-lg">
+                <span className="text-xl">📊</span>
+              </div>
+              <h3 className="font-semibold text-gray-700">Total Devices</h3>
+            </div>
+            <p className="text-3xl font-bold text-gray-900">{devices.length}</p>
+          </div>
+
+          <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="flex items-center space-x-3 mb-2">
+              <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-2 rounded-lg">
+                <span className="text-xl">✅</span>
+              </div>
+              <h3 className="font-semibold text-gray-700">Identified</h3>
+            </div>
+            <p className="text-3xl font-bold text-gray-900">
+              {devices.filter(d => d.name).length}
+            </p>
+          </div>
+
+          <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="flex items-center space-x-3 mb-2">
+              <div className="bg-gradient-to-br from-orange-500 to-red-600 p-2 rounded-lg">
+                <span className="text-xl">❓</span>
+              </div>
+              <h3 className="font-semibold text-gray-700">Unknown</h3>
+            </div>
+            <p className="text-3xl font-bold text-gray-900">
+              {devices.filter(d => !d.name).length}
+            </p>
+          </div>
+        </div>
+
         {/* Devices Section */}
         <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-gray-100">
           <div className="flex items-center justify-between mb-6">
@@ -186,43 +223,6 @@ export default function NetworkDetail() {
               </table>
             </div>
           )}
-        </div>
-
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-gray-100">
-            <div className="flex items-center space-x-3 mb-2">
-              <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-2 rounded-lg">
-                <span className="text-xl">📊</span>
-              </div>
-              <h3 className="font-semibold text-gray-700">Total Devices</h3>
-            </div>
-            <p className="text-3xl font-bold text-gray-900">{devices.length}</p>
-          </div>
-
-          <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-gray-100">
-            <div className="flex items-center space-x-3 mb-2">
-              <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-2 rounded-lg">
-                <span className="text-xl">✅</span>
-              </div>
-              <h3 className="font-semibold text-gray-700">Identified</h3>
-            </div>
-            <p className="text-3xl font-bold text-gray-900">
-              {devices.filter(d => d.name).length}
-            </p>
-          </div>
-
-          <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-gray-100">
-            <div className="flex items-center space-x-3 mb-2">
-              <div className="bg-gradient-to-br from-orange-500 to-red-600 p-2 rounded-lg">
-                <span className="text-xl">❓</span>
-              </div>
-              <h3 className="font-semibold text-gray-700">Unknown</h3>
-            </div>
-            <p className="text-3xl font-bold text-gray-900">
-              {devices.filter(d => !d.name).length}
-            </p>
-          </div>
         </div>
       </main>
     </div>
