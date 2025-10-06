@@ -213,15 +213,6 @@ export default function NetworkDetail() {
                   {/* Device Header */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center space-x-3">
-                      <div className={`p-3 rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300 ${
-                        device.state === 'online' 
-                          ? 'bg-gradient-to-br from-green-500 to-emerald-600' 
-                          : 'bg-gradient-to-br from-gray-400 to-gray-500'
-                      }`}>
-                        <span className="text-2xl">
-                          {device.state === 'online' ? '💻' : '💤'}
-                        </span>
-                      </div>
                       <div>
                         <h3 className="text-lg font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
                           {device.name || 'Unknown Device'}
@@ -230,12 +221,8 @@ export default function NetworkDetail() {
                       </div>
                     </div>
                     {/* State Badge */}
-                    <div className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      device.state === 'online' 
-                        ? 'bg-green-100 text-green-700' 
-                        : 'bg-gray-100 text-gray-700'
-                    }`}>
-                      {device.state === 'online' ? '🟢 Online' : '⚫ Offline'}
+                    <div className={`px-3 py-1 rounded-full text-xs font-semibold`}>
+                      {device.state === 'online' ? '🟢' : '⚫'}
                     </div>
                   </div>
 
