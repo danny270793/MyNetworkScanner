@@ -76,7 +76,7 @@ export default function Settings() {
           </div>
 
           {/* Theme Settings - Mobile Optimized */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100 dark:border-gray-700">
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100 dark:border-gray-700 relative z-10">
             <div className="flex items-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
               <div className="bg-gradient-to-br from-purple-500 to-pink-600 p-1.5 sm:p-2 rounded-lg">
                 <span className="text-lg sm:text-xl">🎨</span>
@@ -91,7 +91,7 @@ export default function Settings() {
                 <p className="font-medium text-gray-700 dark:text-gray-300 text-sm sm:text-base">Appearance</p>
                 <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Select how the interface should look</p>
               </div>
-              <div className="relative z-50 flex-shrink-0">
+              <div className="relative z-[60] flex-shrink-0">
                 <ThemePicker />
               </div>
             </div>

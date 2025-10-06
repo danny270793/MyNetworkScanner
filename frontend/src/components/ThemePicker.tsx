@@ -51,7 +51,7 @@ export default function ThemePicker() {
           />
           
           {/* Dropdown */}
-          <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-600 z-50 overflow-hidden">
+          <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-600 z-[60] overflow-hidden">
             {themes.map((themeOption) => (
               <button
                 key={themeOption.value}
