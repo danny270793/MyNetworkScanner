@@ -22,10 +22,14 @@ export default function LanguageSwitcher() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 bg-white/80 backdrop-blur-lg rounded-lg px-3 py-2 border border-gray-200 hover:bg-white hover:shadow-md transition-all duration-200"
+        className="flex items-center justify-between w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 rounded-lg sm:rounded-xl hover:border-indigo-500 dark:hover:border-indigo-400 transition-all duration-200 touch-manipulation"
       >
-        <span className="text-lg">{currentLanguage.flag}</span>
-        <span className="text-sm font-medium text-gray-700">{currentLanguage.name}</span>
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          <span className="text-lg">{currentLanguage.flag}</span>
+          <span className="text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">
+            {currentLanguage.name}
+          </span>
+        </div>
         <svg
           className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${
             isOpen ? 'rotate-180' : ''
