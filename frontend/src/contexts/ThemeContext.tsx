@@ -26,8 +26,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>('system');
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
 
-  console.log('ThemeProvider initialized with:', { theme, resolvedTheme });
-
   // Load theme from localStorage on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme;
@@ -39,17 +37,8 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   // Handle system theme changes
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    console.log('System theme detection:', { 
-      theme, 
-      systemPrefersDark: mediaQuery.matches,
-      mediaQuery: mediaQuery.media
-    });
     
     const handleChange = () => {
-      console.log('System theme changed:', { 
-        theme, 
-        systemPrefersDark: mediaQuery.matches 
-      });
       if (theme === 'system') {
         setResolvedTheme(mediaQuery.matches ? 'dark' : 'light');
       }
@@ -57,9 +46,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
     // Set initial resolved theme
     if (theme === 'system') {
-      const systemTheme = mediaQuery.matches ? 'dark' : 'light';
-      console.log('Setting initial system theme:', systemTheme);
-      setResolvedTheme(systemTheme);
+      setResolvedTheme(mediaQuery.matches ? 'dark' : 'light');
     }
 
     // Listen for system theme changes
@@ -81,19 +68,12 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   useEffect(() => {
     const root = document.documentElement;
     
-    console.log('Applying theme:', { theme, resolvedTheme });
-    console.log('Document classes before:', root.classList.toString());
-    
     if (resolvedTheme === 'dark') {
       root.classList.add('dark');
-      console.log('Added dark class');
     } else {
       root.classList.remove('dark');
-      console.log('Removed dark class');
     }
-    
-    console.log('Document classes after:', root.classList.toString());
-  }, [resolvedTheme, theme]);
+  }, [resolvedTheme]);
 
   // Save theme to localStorage
   const handleSetTheme = (newTheme: Theme) => {
