@@ -14,6 +14,7 @@ export default function ThemePicker() {
   const currentTheme = themes.find(t => t.value === theme) || themes[2]; // Default to system
 
   const handleThemeChange = (newTheme: typeof theme) => {
+    console.log('ThemePicker: Changing theme from', theme, 'to', newTheme);
     setTheme(newTheme);
     setIsOpen(false);
   };
