@@ -158,5 +158,26 @@
     "offline": "⚫ Hors ligne",
     "identified": "Identifié",
     "unknown": "Inconnu"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": {
+      "title": "Langue",
+      "description": "Choisissez votre langue préférée pour l'interface",
+      "currentLanguage": "Langue Actuelle",
+      "changeLanguage": "Cliquez pour changer de langue"
+    },
+    "account": {
+      "title": "Informations du Compte",
+      "description": "Détails et informations de votre compte",
+      "email": "Adresse E-mail",
+      "userId": "ID Utilisateur"
+    },
+    "app": {
+      "title": "Informations de l'Application",
+      "description": "Informations sur cette application",
+      "name": "Nom de l'Application",
+      "version": "Version"
+    }
   }
 }
