@@ -68,12 +68,16 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   useEffect(() => {
     const root = document.documentElement;
     
+    console.log('Theme changed:', { theme, resolvedTheme });
+    
     if (resolvedTheme === 'dark') {
       root.classList.add('dark');
+      console.log('Added dark class to document');
     } else {
       root.classList.remove('dark');
+      console.log('Removed dark class from document');
     }
-  }, [resolvedTheme]);
+  }, [resolvedTheme, theme]);
 
   // Save theme to localStorage
   const handleSetTheme = (newTheme: Theme) => {
