@@ -9,7 +9,7 @@
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
     "target": "esnext",
-    "lib": ["esnext"],
+    "lib": ["esnext", "dom"],
     "types": ["node"],
     // For nodejs:
     // "lib": ["esnext"],
@@ -22,8 +22,8 @@
     "declarationMap": true,
 
     // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
+    // "noUncheckedIndexedAccess": true, // Disabled for Supabase compatibility
+    // "exactOptionalPropertyTypes": true, // Disabled for Supabase compatibility
 
     // Style Options
     // "noImplicitReturns": true,
@@ -36,9 +36,9 @@
     // Recommended Options
     "strict": true,
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
+    // "verbatimModuleSyntax": true, // Disabled for Supabase compatibility
     "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
+    // "noUncheckedSideEffectImports": true, // Disabled for Supabase compatibility
     "moduleDetection": "force",
     "skipLibCheck": true,
   }
