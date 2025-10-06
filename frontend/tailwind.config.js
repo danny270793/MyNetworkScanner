@@ -1,7 +1,7 @@
 import { defineConfig } from '@tailwindcss/vite'
 
 export default defineConfig({
-  darkMode: 'class', // Enable dark mode with class strategy
+  darkMode: 'class',
   theme: {
     extend: {
       animation: {
@@ -15,5 +15,9 @@ export default defineConfig({
         },
       },
     },
+  },
+  // Ensure dark mode is properly configured
+  corePlugins: {
+    preflight: true,
   },
 })
