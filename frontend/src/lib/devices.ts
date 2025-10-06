@@ -37,14 +37,25 @@ export async function getDevicesByNetwork(networkId: string): Promise<Device[]> 
   const { data, error } = await supabase
     .from('devices')
     .select('*')
-    .eq('network_id', networkId)
-    .order('created_at', { ascending: false });
+    .eq('network_id', networkId);
 
   if (error) {
     throw new Error(error.message);
   }
 
-  return data || [];
+  // Sort devices by IP address numerically
+  const sortedData = data?.sort((a, b) => {
+    if (!a.ip || !b.ip) return 0;
+    
+    // Convert IP addresses to numbers for proper sorting
+    const ipToNumber = (ip: string) => {
+      return ip.split('.').reduce((acc, octet) => (acc << 8) + parseInt(octet, 10), 0);
+    };
+    
+    return ipToNumber(a.ip) - ipToNumber(b.ip);
+  }) || [];
+
+  return sortedData;
 }
 
 // Create a new device
