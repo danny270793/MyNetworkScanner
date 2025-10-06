@@ -240,7 +240,7 @@ export default function NetworkDetail() {
 
                   {/* Device Details - Mobile Optimized */}
                   <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-4">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1 sm:space-y-0">
+                    <div className="flex items-center justify-between">
                       <span className={`text-xs sm:text-sm font-semibold ${
                         device.state === 'offline' ? 'text-gray-400' : 'text-gray-600'
                       }`}>MAC Address:</span>
@@ -250,7 +250,7 @@ export default function NetworkDetail() {
                     </div>
                     
                     {device.brand && (
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1 sm:space-y-0">
+                      <div className="flex items-center justify-between">
                         <span className={`text-xs sm:text-sm font-semibold ${
                           device.state === 'offline' ? 'text-gray-400' : 'text-gray-600'
                         }`}>Brand:</span>
@@ -260,7 +260,7 @@ export default function NetworkDetail() {
                       </div>
                     )}
 
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1 sm:space-y-0">
+                    <div className="flex items-center justify-between">
                       <span className={`text-xs sm:text-sm font-semibold ${
                         device.state === 'offline' ? 'text-gray-400' : 'text-gray-600'
                       }`}>Discovered:</span>
@@ -272,7 +272,7 @@ export default function NetworkDetail() {
                     </div>
 
                     {device.last_seen && (
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1 sm:space-y-0">
+                      <div className="flex items-center justify-between">
                         <span className={`text-xs sm:text-sm font-semibold ${
                           device.state === 'offline' ? 'text-gray-400' : 'text-gray-600'
                         }`}>Last Seen:</span>
