@@ -51,7 +51,7 @@ export default function Settings() {
         {/* Settings Sections */}
         <div className="space-y-6">
           {/* Language Settings */}
-          <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-gray-100">
+          <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-gray-100 relative z-10">
             <div className="flex items-center space-x-3 mb-4">
               <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-2 rounded-lg">
                 <span className="text-xl">🌍</span>
@@ -66,7 +66,9 @@ export default function Settings() {
                 <p className="font-medium text-gray-700">{t('settings.language.currentLanguage')}</p>
                 <p className="text-sm text-gray-500">{t('settings.language.changeLanguage')}</p>
               </div>
-              <LanguageSwitcher />
+              <div className="relative z-50">
+                <LanguageSwitcher />
+              </div>
             </div>
           </div>
 
@@ -85,10 +87,6 @@ export default function Settings() {
               <div className="flex items-center justify-between py-2">
                 <span className="font-medium text-gray-700">{t('settings.account.email')}</span>
                 <span className="text-gray-600 font-mono text-sm">{user?.email}</span>
-              </div>
-              <div className="flex items-center justify-between py-2">
-                <span className="font-medium text-gray-700">{t('settings.account.userId')}</span>
-                <span className="text-gray-600 font-mono text-sm">{user?.id}</span>
               </div>
             </div>
           </div>
