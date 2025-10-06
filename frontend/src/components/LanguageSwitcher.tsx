@@ -47,19 +47,21 @@ export default function LanguageSwitcher() {
           />
           
           {/* Dropdown */}
-          <div className="absolute right-0 mt-2 w-48 bg-white/95 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
+          <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-600 z-[60] overflow-hidden">
             {languages.map((language) => (
               <button
                 key={language.code}
                 onClick={() => handleLanguageChange(language.code)}
-                className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors duration-200 ${
-                  language.code === i18n.language ? 'bg-indigo-50 text-indigo-700' : 'text-gray-700'
+                className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 ${
+                  language.code === i18n.language 
+                    ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300' 
+                    : 'text-gray-700 dark:text-gray-300'
                 }`}
               >
                 <span className="text-lg">{language.flag}</span>
                 <span className="font-medium">{language.name}</span>
                 {language.code === i18n.language && (
-                  <svg className="w-4 h-4 ml-auto text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 ml-auto text-indigo-600 dark:text-indigo-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 )}

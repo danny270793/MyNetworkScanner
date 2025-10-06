@@ -69,7 +69,7 @@ export default function Settings() {
                 <p className="font-medium text-gray-700 dark:text-gray-300 text-sm sm:text-base">{t('settings.language.currentLanguage')}</p>
                 <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{t('settings.language.changeLanguage')}</p>
               </div>
-              <div className="relative z-50 flex-shrink-0">
+              <div className="relative z-[60] flex-shrink-0">
                 <LanguageSwitcher />
               </div>
             </div>
