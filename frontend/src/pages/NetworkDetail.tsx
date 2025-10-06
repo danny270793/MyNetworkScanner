@@ -208,16 +208,28 @@ export default function NetworkDetail() {
               {devices.map((device) => (
                 <div
                   key={device.id}
-                  className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 touch-manipulation"
+                  className={`group backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border transition-all duration-300 touch-manipulation ${
+                    device.state === 'offline'
+                      ? 'bg-gray-100/80 border-gray-200 hover:shadow-lg hover:-translate-y-0.5 opacity-75'
+                      : 'bg-white/80 border-gray-100 hover:shadow-2xl hover:-translate-y-1'
+                  }`}
                 >
                   {/* Device Header - Mobile Optimized */}
                   <div className="flex items-start justify-between mb-3 sm:mb-4">
                     <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
                       <div className="min-w-0 flex-1">
-                        <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-indigo-600 transition-colors truncate">
+                        <h3 className={`text-base sm:text-lg font-bold transition-colors truncate ${
+                          device.state === 'offline'
+                            ? 'text-gray-500 group-hover:text-gray-600'
+                            : 'text-gray-900 group-hover:text-indigo-600'
+                        }`}>
                           {device.name || 'Unknown Device'}
                         </h3>
-                        <p className="text-xs sm:text-sm text-indigo-600 font-mono truncate">{device.ip}</p>
+                        <p className={`text-xs sm:text-sm font-mono truncate ${
+                          device.state === 'offline'
+                            ? 'text-gray-400'
+                            : 'text-indigo-600'
+                        }`}>{device.ip}</p>
                       </div>
                     </div>
                     {/* State Badge */}
@@ -229,28 +241,44 @@ export default function NetworkDetail() {
                   {/* Device Details - Mobile Optimized */}
                   <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-4">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1 sm:space-y-0">
-                      <span className="text-xs sm:text-sm font-semibold text-gray-600">MAC Address:</span>
-                      <span className="font-mono text-xs sm:text-sm text-gray-700 break-all">{device.mac}</span>
+                      <span className={`text-xs sm:text-sm font-semibold ${
+                        device.state === 'offline' ? 'text-gray-400' : 'text-gray-600'
+                      }`}>MAC Address:</span>
+                      <span className={`font-mono text-xs sm:text-sm break-all ${
+                        device.state === 'offline' ? 'text-gray-400' : 'text-gray-700'
+                      }`}>{device.mac}</span>
                     </div>
                     
                     {device.brand && (
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1 sm:space-y-0">
-                        <span className="text-xs sm:text-sm font-semibold text-gray-600">Brand:</span>
-                        <span className="text-xs sm:text-sm text-gray-700 truncate">{device.brand}</span>
+                        <span className={`text-xs sm:text-sm font-semibold ${
+                          device.state === 'offline' ? 'text-gray-400' : 'text-gray-600'
+                        }`}>Brand:</span>
+                        <span className={`text-xs sm:text-sm truncate ${
+                          device.state === 'offline' ? 'text-gray-400' : 'text-gray-700'
+                        }`}>{device.brand}</span>
                       </div>
                     )}
 
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1 sm:space-y-0">
-                      <span className="text-xs sm:text-sm font-semibold text-gray-600">Discovered:</span>
-                      <span className="text-xs sm:text-sm text-gray-500">
+                      <span className={`text-xs sm:text-sm font-semibold ${
+                        device.state === 'offline' ? 'text-gray-400' : 'text-gray-600'
+                      }`}>Discovered:</span>
+                      <span className={`text-xs sm:text-sm ${
+                        device.state === 'offline' ? 'text-gray-400' : 'text-gray-500'
+                      }`}>
                         {new Date(device.created_at).toLocaleDateString()}
                       </span>
                     </div>
 
                     {device.last_seen && (
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1 sm:space-y-0">
-                        <span className="text-xs sm:text-sm font-semibold text-gray-600">Last Seen:</span>
-                        <span className="text-xs sm:text-sm text-gray-500">
+                        <span className={`text-xs sm:text-sm font-semibold ${
+                          device.state === 'offline' ? 'text-gray-400' : 'text-gray-600'
+                        }`}>Last Seen:</span>
+                        <span className={`text-xs sm:text-sm ${
+                          device.state === 'offline' ? 'text-gray-400' : 'text-gray-500'
+                        }`}>
                           {new Date(device.last_seen).toLocaleString()}
                         </span>
                       </div>
@@ -260,19 +288,27 @@ export default function NetworkDetail() {
                   {/* Status Badge and Edit Button - Mobile Optimized */}
                   <div className="flex items-center justify-between">
                     <div className={`px-2 sm:px-3 py-1 rounded-full text-xs font-semibold ${
-                      device.name 
-                        ? 'bg-green-100 text-green-700' 
-                        : 'bg-orange-100 text-orange-700'
+                      device.state === 'offline'
+                        ? 'bg-gray-100 text-gray-500'
+                        : device.name 
+                          ? 'bg-green-100 text-green-700' 
+                          : 'bg-orange-100 text-orange-700'
                     }`}>
-                      {device.name ? 'Identified' : 'Unknown'}
+                      {device.state === 'offline' ? 'Offline' : (device.name ? 'Identified' : 'Unknown')}
                     </div>
                     <div className="flex items-center space-x-1 sm:space-x-2">
-                      <div className="text-xs text-gray-400 hidden sm:block">
+                      <div className={`text-xs hidden sm:block ${
+                        device.state === 'offline' ? 'text-gray-300' : 'text-gray-400'
+                      }`}>
                         {new Date(device.created_at).toLocaleTimeString()}
                       </div>
                       <button
                         onClick={() => handleEditDevice(device)}
-                        className="p-1.5 sm:p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all duration-200 touch-manipulation"
+                        className={`p-1.5 sm:p-2 rounded-lg transition-all duration-200 touch-manipulation ${
+                          device.state === 'offline'
+                            ? 'text-gray-300 hover:text-gray-500 hover:bg-gray-100'
+                            : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'
+                        }`}
                         title="Edit device"
                       >
                         <span className="text-sm">✏️</span>
