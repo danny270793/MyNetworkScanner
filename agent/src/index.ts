@@ -7,13 +7,14 @@ config();
 
 const supabaseUrl: string|undefined = process.env.SUPABASE_URL;
 const supabaseKey: string|undefined = process.env.SUPABASE_KEY;
+const networkName: string|undefined = process.env.NETWORK_NAME;
     
 async function main() {
     try {
-        if (supabaseUrl === undefined || supabaseKey === undefined) {
-            throw new Error('❌ Error: SUPABASE_URL and SUPABASE_KEY environment variables are required');
+        if (supabaseUrl === undefined || supabaseKey === undefined || networkName === undefined) {
+            throw new Error('❌ Error: SUPABASE_URL and SUPABASE_KEY and NETWORK_NAME environment variables are required');
         }
-        const backend: Backend = new Backend(supabaseUrl, supabaseKey);
+        const backend: Backend = new Backend(supabaseUrl, supabaseKey, networkName);
 
         const devices: NetworkDevice[] = await NetworkScanner.scanNetwork();
         
