@@ -1,0 +1,10 @@
+{
+  "appId": "io.github.danny270793.my.networkscanner",
+  "appName": "My Network Scanner",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+  }
+}
