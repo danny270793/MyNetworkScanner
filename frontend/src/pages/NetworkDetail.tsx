@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getDevicesByNetwork, type Device } from '../lib/devices';
+import { getDevicesByNetwork, updateDevice, type Device } from '../lib/devices';
 import { getNetworks, type Network } from '../lib/networks';
+import DeviceEditModal from '../components/DeviceEditModal';
 
 export default function NetworkDetail() {
   const { networkId } = useParams<{ networkId: string }>();
@@ -11,6 +12,9 @@ export default function NetworkDetail() {
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedDevice, setSelectedDevice] = useState<Device | null>(null);
 
   useEffect(() => {
     loadNetworkAndDevices();
@@ -41,6 +45,20 @@ export default function NetworkDetail() {
       setError(err instanceof Error ? err.message : 'Failed to load data');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleEditDevice = (device: Device) => {
+    setSelectedDevice(device);
+    setIsEditModalOpen(true);
+  };
+
+  const handleDeviceUpdate = async (deviceId: string, name: string, brand: string) => {
+    try {
+      await updateDevice(deviceId, { name, brand });
+      await loadNetworkAndDevices(); // Reload devices to show updated info
+    } catch (err) {
+      throw err; // Re-throw to let the modal handle the error
     }
   };
 
@@ -217,7 +235,7 @@ export default function NetworkDetail() {
                     </div>
                   </div>
 
-                  {/* Status Badge */}
+                  {/* Status Badge and Edit Button */}
                   <div className="flex items-center justify-between">
                     <div className={`px-3 py-1 rounded-full text-xs font-semibold ${
                       device.name 
@@ -226,8 +244,17 @@ export default function NetworkDetail() {
                     }`}>
                       {device.name ? 'Identified' : 'Unknown'}
                     </div>
-                    <div className="text-xs text-gray-400">
-                      {new Date(device.created_at).toLocaleTimeString()}
+                    <div className="flex items-center space-x-2">
+                      <div className="text-xs text-gray-400">
+                        {new Date(device.created_at).toLocaleTimeString()}
+                      </div>
+                      <button
+                        onClick={() => handleEditDevice(device)}
+                        className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all duration-200"
+                        title="Edit device"
+                      >
+                        <span className="text-sm">✏️</span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -236,6 +263,14 @@ export default function NetworkDetail() {
           )}
         </div>
       </main>
+
+      {/* Device Edit Modal */}
+      <DeviceEditModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        onSubmit={handleDeviceUpdate}
+        device={selectedDevice}
+      />
     </div>
   );
 }
