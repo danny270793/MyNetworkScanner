@@ -16,18 +16,6 @@ export default function Settings() {
     navigate('/login');
   };
 
-  // Test function to manually toggle theme
-  const testThemeToggle = () => {
-    console.log('🧪 Manual theme test triggered');
-    const root = document.documentElement;
-    if (root.classList.contains('dark')) {
-      root.classList.remove('dark');
-      console.log('🧪 Removed dark class manually');
-    } else {
-      root.classList.add('dark');
-      console.log('🧪 Added dark class manually');
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">

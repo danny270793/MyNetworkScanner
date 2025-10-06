@@ -64,10 +64,10 @@ export default function NetworkDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center">
         <div className="text-center space-y-4">
-          <div className="w-16 h-16 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin mx-auto"></div>
-          <p className="text-gray-600 font-medium">Loading network details...</p>
+          <div className="w-16 h-16 border-4 border-indigo-200 dark:border-indigo-700 border-t-indigo-600 dark:border-t-indigo-400 rounded-full animate-spin mx-auto"></div>
+          <p className="text-gray-600 dark:text-gray-400 font-medium">Loading network details...</p>
         </div>
       </div>
     );
@@ -75,13 +75,13 @@ export default function NetworkDetail() {
 
   if (error || !network) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center p-4">
-        <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl p-8 text-center max-w-md">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center p-4">
+        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl shadow-xl p-8 text-center max-w-md">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full mb-4">
             <span className="text-3xl">⚠️</span>
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Error</h2>
-          <p className="text-gray-600 mb-6">{error || 'Network not found'}</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Error</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">{error || 'Network not found'}</p>
           <button
             onClick={() => navigate('/')}
             className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
@@ -94,14 +94,14 @@ export default function NetworkDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Mobile-First Header */}
-      <nav className="bg-white/90 backdrop-blur-xl border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <nav className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 shadow-sm">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 sm:h-16">
             <button
               onClick={() => navigate('/')}
-              className="flex items-center space-x-1 sm:space-x-2 text-gray-600 hover:text-gray-900 transition-colors touch-manipulation"
+              className="flex items-center space-x-1 sm:space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors touch-manipulation"
             >
               <span className="text-lg sm:text-xl">←</span>
             </button>
@@ -110,9 +110,9 @@ export default function NetworkDetail() {
                 <span className="text-lg sm:text-2xl">🌐</span>
               </div>
               <div className="min-w-0 flex-1">
-                <h1 className="text-lg sm:text-xl font-bold text-gray-900 truncate">{network.name}</h1>
+                <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 truncate">{network.name}</h1>
                 {network.ip_range && (
-                  <p className="text-xs sm:text-sm text-indigo-600 font-mono truncate">{network.ip_range}</p>
+                  <p className="text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 font-mono truncate">{network.ip_range}</p>
                 )}
               </div>
             </div>
@@ -125,56 +125,56 @@ export default function NetworkDetail() {
       <main className="px-4 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-4 sm:space-y-6">
         {/* Network Info Card - Mobile Optimized */}
         {network.description && (
-          <div className="bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100">
-            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">📝 Description</h3>
-            <p className="text-gray-600 text-sm sm:text-base">{network.description}</p>
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100 dark:border-gray-700">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">📝 Description</h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{network.description}</p>
           </div>
         )}
 
         {/* Stats Cards - Mobile Optimized */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6">
-          <div className="bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-6 border border-gray-100">
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-6 border border-gray-100 dark:border-gray-700">
             <div className="flex items-center space-x-2 sm:space-x-3 mb-1 sm:mb-2">
               <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 sm:p-2 rounded-lg">
                 <span className="text-sm sm:text-xl">📊</span>
               </div>
-              <h3 className="font-semibold text-gray-700 text-xs sm:text-sm">Total</h3>
+              <h3 className="font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">Total</h3>
             </div>
-            <p className="text-xl sm:text-3xl font-bold text-gray-900">{devices.length}</p>
+            <p className="text-xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">{devices.length}</p>
           </div>
 
-          <div className="bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-6 border border-gray-100">
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-6 border border-gray-100 dark:border-gray-700">
             <div className="flex items-center space-x-2 sm:space-x-3 mb-1 sm:mb-2">
               <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-1.5 sm:p-2 rounded-lg">
                 <span className="text-sm sm:text-xl">🟢</span>
               </div>
-              <h3 className="font-semibold text-gray-700 text-xs sm:text-sm">Online</h3>
+              <h3 className="font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">Online</h3>
             </div>
-            <p className="text-xl sm:text-3xl font-bold text-gray-900">
+            <p className="text-xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
               {devices.filter(d => d.state === 'online').length}
             </p>
           </div>
 
-          <div className="bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-6 border border-gray-100">
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-6 border border-gray-100 dark:border-gray-700">
             <div className="flex items-center space-x-2 sm:space-x-3 mb-1 sm:mb-2">
               <div className="bg-gradient-to-br from-gray-500 to-gray-600 p-1.5 sm:p-2 rounded-lg">
                 <span className="text-sm sm:text-xl">⚫</span>
               </div>
-              <h3 className="font-semibold text-gray-700 text-xs sm:text-sm">Offline</h3>
+              <h3 className="font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">Offline</h3>
             </div>
-            <p className="text-xl sm:text-3xl font-bold text-gray-900">
+            <p className="text-xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
               {devices.filter(d => d.state === 'offline').length}
             </p>
           </div>
 
-          <div className="bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-6 border border-gray-100">
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-6 border border-gray-100 dark:border-gray-700">
             <div className="flex items-center space-x-2 sm:space-x-3 mb-1 sm:mb-2">
               <div className="bg-gradient-to-br from-orange-500 to-red-600 p-1.5 sm:p-2 rounded-lg">
                 <span className="text-sm sm:text-xl">❓</span>
               </div>
-              <h3 className="font-semibold text-gray-700 text-xs sm:text-sm">Unknown</h3>
+              <h3 className="font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">Unknown</h3>
             </div>
-            <p className="text-xl sm:text-3xl font-bold text-gray-900">
+            <p className="text-xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
               {devices.filter(d => !d.name).length}
             </p>
           </div>
@@ -184,22 +184,22 @@ export default function NetworkDetail() {
         <div className="">
           <div className="flex items-center justify-between mb-4 sm:mb-6">
             <div>
-              <h2 className="text-lg sm:text-2xl font-bold text-gray-900 flex items-center space-x-1 sm:space-x-2">
+              <h2 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-gray-100 flex items-center space-x-1 sm:space-x-2">
                 <span className="text-base sm:text-xl">📱</span>
                 <span>Devices</span>
-                <span className="text-sm sm:text-lg font-normal text-gray-500">({devices.length})</span>
+                <span className="text-sm sm:text-lg font-normal text-gray-500 dark:text-gray-400">({devices.length})</span>
               </h2>
-              <p className="text-gray-600 text-xs sm:text-sm mt-1">All devices connected to this network</p>
+              <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mt-1">All devices connected to this network</p>
             </div>
           </div>
 
           {devices.length === 0 ? (
             <div className="text-center py-12">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full mb-4">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-full mb-4">
                 <span className="text-4xl">📱</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">No Devices Found</h3>
-              <p className="text-gray-600 max-w-md mx-auto">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">No Devices Found</h3>
+              <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
                 No devices have been scanned on this network yet. Start a network scan to discover devices.
               </p>
             </div>
@@ -210,8 +210,8 @@ export default function NetworkDetail() {
                   key={device.id}
                   className={`group backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border transition-all duration-300 touch-manipulation ${
                     device.state === 'offline'
-                      ? 'bg-gray-100/80 border-gray-200 hover:shadow-lg hover:-translate-y-0.5 opacity-75'
-                      : 'bg-white/80 border-gray-100 hover:shadow-2xl hover:-translate-y-1'
+                      ? 'bg-gray-100/80 dark:bg-gray-700/80 border-gray-200 dark:border-gray-600 hover:shadow-lg hover:-translate-y-0.5 opacity-75'
+                      : 'bg-white/80 dark:bg-gray-800/80 border-gray-100 dark:border-gray-700 hover:shadow-2xl hover:-translate-y-1'
                   }`}
                 >
                   {/* Device Header - Mobile Optimized */}
@@ -220,15 +220,15 @@ export default function NetworkDetail() {
                       <div className="min-w-0 flex-1">
                         <h3 className={`text-base sm:text-lg font-bold transition-colors truncate ${
                           device.state === 'offline'
-                            ? 'text-gray-500 group-hover:text-gray-600'
-                            : 'text-gray-900 group-hover:text-indigo-600'
+                            ? 'text-gray-500 dark:text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300'
+                            : 'text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400'
                         }`}>
                           {device.name || 'Unknown Device'}
                         </h3>
                         <p className={`text-xs sm:text-sm font-mono truncate ${
                           device.state === 'offline'
-                            ? 'text-gray-400'
-                            : 'text-indigo-600'
+                            ? 'text-gray-400 dark:text-gray-500'
+                            : 'text-indigo-600 dark:text-indigo-400'
                         }`}>{device.ip}</p>
                       </div>
                     </div>
@@ -242,30 +242,30 @@ export default function NetworkDetail() {
                   <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-4">
                     <div className="flex items-center justify-between">
                       <span className={`text-xs sm:text-sm font-semibold ${
-                        device.state === 'offline' ? 'text-gray-400' : 'text-gray-600'
+                        device.state === 'offline' ? 'text-gray-400 dark:text-gray-500' : 'text-gray-600 dark:text-gray-400'
                       }`}>MAC Address:</span>
                       <span className={`font-mono text-xs sm:text-sm break-all ${
-                        device.state === 'offline' ? 'text-gray-400' : 'text-gray-700'
+                        device.state === 'offline' ? 'text-gray-400 dark:text-gray-500' : 'text-gray-700 dark:text-gray-300'
                       }`}>{device.mac}</span>
                     </div>
                     
                     {device.brand && (
                       <div className="flex items-center justify-between">
                         <span className={`text-xs sm:text-sm font-semibold ${
-                          device.state === 'offline' ? 'text-gray-400' : 'text-gray-600'
+                          device.state === 'offline' ? 'text-gray-400 dark:text-gray-500' : 'text-gray-600 dark:text-gray-400'
                         }`}>Brand:</span>
                         <span className={`text-xs sm:text-sm truncate ${
-                          device.state === 'offline' ? 'text-gray-400' : 'text-gray-700'
+                          device.state === 'offline' ? 'text-gray-400 dark:text-gray-500' : 'text-gray-700 dark:text-gray-300'
                         }`}>{device.brand}</span>
                       </div>
                     )}
 
                     <div className="flex items-center justify-between">
                       <span className={`text-xs sm:text-sm font-semibold ${
-                        device.state === 'offline' ? 'text-gray-400' : 'text-gray-600'
+                        device.state === 'offline' ? 'text-gray-400 dark:text-gray-500' : 'text-gray-600 dark:text-gray-400'
                       }`}>Discovered:</span>
                       <span className={`text-xs sm:text-sm ${
-                        device.state === 'offline' ? 'text-gray-400' : 'text-gray-500'
+                        device.state === 'offline' ? 'text-gray-400 dark:text-gray-500' : 'text-gray-500 dark:text-gray-400'
                       }`}>
                         {new Date(device.created_at).toLocaleDateString()}
                       </span>
@@ -274,10 +274,10 @@ export default function NetworkDetail() {
                     {device.last_seen && (
                       <div className="flex items-center justify-between">
                         <span className={`text-xs sm:text-sm font-semibold ${
-                          device.state === 'offline' ? 'text-gray-400' : 'text-gray-600'
+                          device.state === 'offline' ? 'text-gray-400 dark:text-gray-500' : 'text-gray-600 dark:text-gray-400'
                         }`}>Last Seen:</span>
                         <span className={`text-xs sm:text-sm ${
-                          device.state === 'offline' ? 'text-gray-400' : 'text-gray-500'
+                          device.state === 'offline' ? 'text-gray-400 dark:text-gray-500' : 'text-gray-500 dark:text-gray-400'
                         }`}>
                           {new Date(device.last_seen).toLocaleString()}
                         </span>
@@ -289,16 +289,16 @@ export default function NetworkDetail() {
                   <div className="flex items-center justify-between">
                     <div className={`px-2 sm:px-3 py-1 rounded-full text-xs font-semibold ${
                       device.state === 'offline'
-                        ? 'bg-gray-100 text-gray-500'
+                        ? 'bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-300'
                         : device.name 
-                          ? 'bg-green-100 text-green-700' 
-                          : 'bg-orange-100 text-orange-700'
+                          ? 'bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-400' 
+                          : 'bg-orange-100 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400'
                     }`}>
                       {device.state === 'offline' ? 'Offline' : (device.name ? 'Identified' : 'Unknown')}
                     </div>
                     <div className="flex items-center space-x-1 sm:space-x-2">
                       <div className={`text-xs hidden sm:block ${
-                        device.state === 'offline' ? 'text-gray-300' : 'text-gray-400'
+                        device.state === 'offline' ? 'text-gray-300 dark:text-gray-500' : 'text-gray-400 dark:text-gray-500'
                       }`}>
                         {new Date(device.created_at).toLocaleTimeString()}
                       </div>
@@ -306,8 +306,8 @@ export default function NetworkDetail() {
                         onClick={() => handleEditDevice(device)}
                         className={`p-1.5 sm:p-2 rounded-lg transition-all duration-200 touch-manipulation ${
                           device.state === 'offline'
-                            ? 'text-gray-300 hover:text-gray-500 hover:bg-gray-100'
-                            : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'
+                            ? 'text-gray-300 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
+                            : 'text-gray-400 dark:text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20'
                         }`}
                         title="Edit device"
                       >
