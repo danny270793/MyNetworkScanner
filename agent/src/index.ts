@@ -21,23 +21,37 @@ async function main() {
         console.log(`\n📊 Found ${devices.length} device(s)\n`);
         
         if (devices.length > 0) {
-            await backend.uploadDevices(devices);
+            const result = await backend.uploadDevices(devices);
             
+            console.log('\n' + '─'.repeat(50));
+            console.log('📊 SCAN SUMMARY');
+            console.log('─'.repeat(50));
+            console.log(`📡 Devices discovered: ${devices.length}`);
+            console.log(`✅ Devices updated: ${result.updated}`);
+            console.log(`➕ New devices added: ${result.added}`);
+            console.log(`⚫ Devices set offline: ${result.setOffline}`);
+            console.log('─'.repeat(50));
+            
+            console.log('\n📱 DISCOVERED DEVICES:');
             console.log('─'.repeat(40));
             console.log(
                 'IP Address'.padEnd(18) + 
-                'MAC Address'.padEnd(20)
+                'MAC Address'.padEnd(20) +
+                'Status'.padEnd(10)
             );
             console.log('─'.repeat(40));
             
             for (const device of devices) {
                 console.log(
                     device.ip.padEnd(18) +
-                    device.mac.padEnd(20)
+                    device.mac.padEnd(20) +
+                    '🟢 Online'.padEnd(10)
                 );
             }
             
             console.log('─'.repeat(40));
+        } else {
+            console.log('\n⚠️  No devices discovered in this scan');
         }
         
     } catch (error) {
