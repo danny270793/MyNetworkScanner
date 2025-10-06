@@ -26,7 +26,8 @@ export interface UpdateNetworkDto {
 export async function getNetworks(): Promise<Network[]> {
   const { data, error } = await supabase
     .from('networks')
-    .select('*');
+    .select('*')
+    .order('created_at', { ascending: false });
 
   if (error) {
     throw new Error(error.message);
