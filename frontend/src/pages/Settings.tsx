@@ -54,7 +54,7 @@ export default function Settings() {
         {/* Settings Sections */}
         <div className="space-y-4 sm:space-y-6">
           {/* Language Settings - Mobile Optimized */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100 dark:border-gray-700 relative z-10">
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100 dark:border-gray-700 relative z-11">
             <div className="flex items-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
               <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 sm:p-2 rounded-lg">
                 <span className="text-lg sm:text-xl">🌍</span>
