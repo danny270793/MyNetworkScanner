@@ -1,5 +1,9 @@
+import { config } from 'dotenv';
 import { Backend } from "./libraries/backend/index.js";
 import { NetworkScanner, type NetworkDevice } from "./libraries/network-scanner.js";
+
+// Load environment variables from .env file
+config();
 
 const supabaseUrl: string|undefined = process.env.SUPABASE_URL;
 const supabaseKey: string|undefined = process.env.SUPABASE_KEY;
