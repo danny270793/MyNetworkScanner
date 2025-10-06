@@ -174,53 +174,64 @@ export default function NetworkDetail() {
               </p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">IP Address</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">MAC Address</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">Device Name</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">Brand</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">Discovered</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {devices.map((device, index) => (
-                    <tr
-                      key={device.id}
-                      className={`border-b border-gray-100 hover:bg-indigo-50/50 transition-colors ${
-                        index % 2 === 0 ? 'bg-white/50' : 'bg-gray-50/50'
-                      }`}
-                    >
-                      <td className="py-4 px-4">
-                        <div className="flex items-center space-x-2">
-                          <span className="text-lg">💻</span>
-                          <span className="font-mono font-medium text-gray-900">{device.ip}</span>
-                        </div>
-                      </td>
-                      <td className="py-4 px-4">
-                        <span className="font-mono text-sm text-gray-700">{device.mac}</span>
-                      </td>
-                      <td className="py-4 px-4">
-                        <span className="text-gray-900 font-medium">
-                          {device.name || <span className="text-gray-400 italic">Unknown</span>}
-                        </span>
-                      </td>
-                      <td className="py-4 px-4">
-                        <span className="text-gray-700">
-                          {device.brand || <span className="text-gray-400 italic">Unknown</span>}
-                        </span>
-                      </td>
-                      <td className="py-4 px-4">
-                        <span className="text-sm text-gray-500">
-                          {new Date(device.created_at).toLocaleString()}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {devices.map((device) => (
+                <div
+                  key={device.id}
+                  className="group bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+                >
+                  {/* Device Header */}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center space-x-3">
+                      <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-3 rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300">
+                        <span className="text-2xl">💻</span>
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                          {device.name || 'Unknown Device'}
+                        </h3>
+                        <p className="text-sm text-indigo-600 font-mono">{device.ip}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Device Details */}
+                  <div className="space-y-3 mb-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-semibold text-gray-600">MAC Address:</span>
+                      <span className="font-mono text-sm text-gray-700">{device.mac}</span>
+                    </div>
+                    
+                    {device.brand && (
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold text-gray-600">Brand:</span>
+                        <span className="text-sm text-gray-700">{device.brand}</span>
+                      </div>
+                    )}
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-semibold text-gray-600">Discovered:</span>
+                      <span className="text-sm text-gray-500">
+                        {new Date(device.created_at).toLocaleDateString()}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Status Badge */}
+                  <div className="flex items-center justify-between">
+                    <div className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                      device.name 
+                        ? 'bg-green-100 text-green-700' 
+                        : 'bg-orange-100 text-orange-700'
+                    }`}>
+                      {device.name ? 'Identified' : 'Unknown'}
+                    </div>
+                    <div className="text-xs text-gray-400">
+                      {new Date(device.created_at).toLocaleTimeString()}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </div>
