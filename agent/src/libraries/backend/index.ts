@@ -19,7 +19,7 @@ export class Backend {
             .single();
         
         if (networkResult.error) {
-            throw new Error(`Network not found: ${networkResult.error.message}`);
+            throw new Error(`Network (${this.networkName}) not found: ${networkResult.error.message}`);
         }
         
         const networkId = networkResult.data.id;
