@@ -9,9 +9,24 @@ export default function Settings() {
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
 
+  console.log('⚙️ Settings page loaded');
+
   const handleSignOut = async () => {
     await signOut();
     navigate('/login');
+  };
+
+  // Test function to manually toggle theme
+  const testThemeToggle = () => {
+    console.log('🧪 Manual theme test triggered');
+    const root = document.documentElement;
+    if (root.classList.contains('dark')) {
+      root.classList.remove('dark');
+      console.log('🧪 Removed dark class manually');
+    } else {
+      root.classList.add('dark');
+      console.log('🧪 Added dark class manually');
+    }
   };
 
   return (
@@ -139,8 +154,6 @@ export default function Settings() {
             </div>
           </div>
         </div>
-
-        {/* Logout Button - Mobile Optimized */}
         <div className="flex justify-center pt-4 sm:pt-8">
           <button
             onClick={handleSignOut}
