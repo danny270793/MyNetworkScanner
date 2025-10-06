@@ -56,7 +56,7 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
 
       {/* Modal */}
       <div className="flex min-h-screen items-center justify-center p-4">
-        <div className="relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white/95 backdrop-blur-lg p-6 shadow-2xl transition-all border border-white/20">
+        <div className="relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg p-6 shadow-2xl transition-all border border-white/20 dark:border-gray-700/20">
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
@@ -64,7 +64,7 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
             </h3>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
               <span className="text-2xl">✕</span>
             </button>
@@ -72,10 +72,10 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
 
           {/* Error Message */}
           {error && (
-            <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-4 mb-4">
+            <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 dark:border-red-400 rounded-lg p-4 mb-4">
               <div className="flex items-center space-x-2">
-                <span className="text-red-500 text-xl">⚠️</span>
-                <p className="text-red-700 text-sm font-medium">{error}</p>
+                <span className="text-red-500 dark:text-red-400 text-xl">⚠️</span>
+                <p className="text-red-700 dark:text-red-300 text-sm font-medium">{error}</p>
               </div>
             </div>
           )}
@@ -83,7 +83,7 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="name" className="block text-sm font-semibold text-gray-700">
+              <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
                 Network Name *
               </label>
               <input
@@ -94,12 +94,12 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
                 required
                 placeholder="Home Network"
                 disabled={loading}
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 dark:disabled:bg-gray-700 disabled:cursor-not-allowed bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="description" className="block text-sm font-semibold text-gray-700">
+              <label htmlFor="description" className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
                 Description
               </label>
               <textarea
@@ -109,12 +109,12 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
                 placeholder="Optional description of this network"
                 disabled={loading}
                 rows={3}
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 disabled:cursor-not-allowed resize-none"
+                className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 dark:disabled:bg-gray-700 disabled:cursor-not-allowed resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="ipRange" className="block text-sm font-semibold text-gray-700">
+              <label htmlFor="ipRange" className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
                 IP Range
               </label>
               <input
@@ -124,9 +124,9 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
                 onChange={(e) => setIpRange(e.target.value)}
                 placeholder="192.168.1.0/24"
                 disabled={loading}
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 dark:disabled:bg-gray-700 disabled:cursor-not-allowed bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
-              <p className="text-xs text-gray-500">Example: 192.168.1.0/24</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">Example: 192.168.1.0/24</p>
             </div>
 
             {/* Actions */}
@@ -135,7 +135,7 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
                 type="button"
                 onClick={onClose}
                 disabled={loading}
-                className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl font-semibold text-gray-700 hover:bg-gray-50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Cancel
               </button>
