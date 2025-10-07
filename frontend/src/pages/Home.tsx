@@ -84,9 +84,9 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Mobile-First Navigation Bar */}
-      <nav className="bg-white/90 backdrop-blur-xl border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <nav className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 shadow-sm">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo and Title */}
@@ -94,7 +94,7 @@ export default function Home() {
               <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg">
                 <span className="text-lg sm:text-2xl">🌐</span>
               </div>
-              <h1 className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent truncate">
+              <h1 className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent truncate">
                 Network Scanner
               </h1>
             </div>
@@ -102,9 +102,9 @@ export default function Home() {
             {/* Mobile Actions */}
             <div className="flex items-center space-x-2 sm:space-x-4">
               {/* User Info - Mobile */}
-              <div className="sm:hidden flex items-center space-x-1 bg-gray-100 rounded-lg px-2 py-1.5">
-                <span className="text-gray-400 text-sm">👤</span>
-                <span className="text-xs font-medium text-gray-700 truncate max-w-20">
+              <div className="sm:hidden flex items-center space-x-1 bg-gray-100 dark:bg-gray-700 rounded-lg px-2 py-1.5">
+                <span className="text-gray-400 dark:text-gray-500 text-sm">👤</span>
+                <span className="text-xs font-medium text-gray-700 dark:text-gray-300 truncate max-w-20">
                   {user?.email?.split('@')[0]}
                 </span>
               </div>
@@ -112,7 +112,7 @@ export default function Home() {
               {/* Settings Button */}
               <button
                 onClick={() => navigate('/settings')}
-                className="p-2 sm:p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all duration-200 touch-manipulation"
+                className="p-2 sm:p-2 text-gray-400 dark:text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-lg transition-all duration-200 touch-manipulation"
                 title={t('settings.title')}
               >
                 <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -130,10 +130,10 @@ export default function Home() {
         {/* Header Section - Mobile Optimized */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
           <div className="flex-1 min-w-0">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
               {t('networks.title')} 🌐
             </h2>
-            <p className="text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">
+            <p className="text-gray-600 dark:text-gray-400 mt-1 sm:mt-2 text-sm sm:text-base">
               {t('networks.subtitle')}
             </p>
           </div>
@@ -185,7 +185,7 @@ export default function Home() {
                    {networks.map((network) => (
                      <div
                        key={network.id}
-                       className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 touch-manipulation"
+                       className="group bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 touch-manipulation"
                      >
                        {/* Clickable card content - Mobile Optimized */}
                        <div 
@@ -198,27 +198,27 @@ export default function Home() {
                                <span className="text-lg sm:text-2xl">🌐</span>
                              </div>
                              <div className="min-w-0 flex-1">
-                               <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors truncate">
+                               <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors truncate">
                                  {network.name}
                                </h3>
                                {network.ip_range && (
-                                 <p className="text-xs sm:text-sm text-indigo-600 font-mono truncate">{network.ip_range}</p>
+                                 <p className="text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 font-mono truncate">{network.ip_range}</p>
                                )}
                              </div>
                            </div>
                          </div>
 
                          {network.description && (
-                           <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 leading-relaxed">{network.description}</p>
+                           <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 leading-relaxed">{network.description}</p>
                          )}
 
-                         <div className="text-xs text-gray-500">
+                         <div className="text-xs text-gray-500 dark:text-gray-400">
                            {t('networks.created')}: {new Date(network.created_at).toLocaleDateString()}
                          </div>
                        </div>
 
                        {/* Action buttons - Mobile Optimized */}
-                       <div className="flex space-x-1 sm:space-x-2 pt-3 sm:pt-4 border-t border-gray-200">
+                       <div className="flex space-x-1 sm:space-x-2 pt-3 sm:pt-4 border-t border-gray-200 dark:border-gray-600">
                          <button
                            onClick={(e) => {
                              e.stopPropagation();

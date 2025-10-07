@@ -1,1 +1,16 @@
+
 @import "tailwindcss";
+
+/* Configure dark mode */
+@variant dark (.dark &);
+
+/* Test dark mode styles */
+.test-dark {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+.dark .test-dark {
+  background-color: #111827;
+  color: #ffffff;
+}

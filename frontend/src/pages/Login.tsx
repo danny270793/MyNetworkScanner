@@ -28,27 +28,27 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4">
       <div className="w-full max-w-md">
         {/* Glass-morphism card - Mobile Optimized */}
-        <div className="bg-white/95 backdrop-blur-lg rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 space-y-4 sm:space-y-6 border border-white/20">
+        <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 space-y-4 sm:space-y-6 border border-white/20 dark:border-gray-700/20">
           {/* Header with animation - Mobile Optimized */}
           <div className="text-center space-y-1 sm:space-y-2">
             <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl sm:rounded-2xl shadow-lg mb-2 transform hover:scale-110 transition-transform duration-300">
               <span className="text-2xl sm:text-3xl">🔐</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
               {t('auth.welcomeBack')}
             </h1>
-            <p className="text-gray-600 text-xs sm:text-sm">{t('auth.signInSubtitle')}</p>
+            <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">{t('auth.signInSubtitle')}</p>
           </div>
 
           {/* Error message */}
           {error && (
-            <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-4 animate-shake">
+            <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 dark:border-red-400 rounded-lg p-4 animate-shake">
               <div className="flex items-center space-x-2">
-                <span className="text-red-500 text-xl">⚠️</span>
-                <p className="text-red-700 text-sm font-medium">{error}</p>
+                <span className="text-red-500 dark:text-red-400 text-xl">⚠️</span>
+                <p className="text-red-700 dark:text-red-300 text-sm font-medium">{error}</p>
               </div>
             </div>
           )}
@@ -56,7 +56,7 @@ export default function Login() {
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
             <div className="space-y-1 sm:space-y-2">
-              <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-gray-700">
+              <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">
                 {t('auth.email')}
               </label>
               <div className="relative">
@@ -71,13 +71,13 @@ export default function Login() {
                   required
                   placeholder={t('auth.emailPlaceholder')}
                   disabled={loading}
-                  className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 disabled:cursor-not-allowed text-sm sm:text-base"
+                  className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 border-2 border-gray-200 dark:border-gray-600 rounded-lg sm:rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 dark:disabled:bg-gray-700 disabled:cursor-not-allowed text-sm sm:text-base bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 />
               </div>
             </div>
 
             <div className="space-y-1 sm:space-y-2">
-              <label htmlFor="password" className="block text-xs sm:text-sm font-semibold text-gray-700">
+              <label htmlFor="password" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">
                 {t('auth.password')}
               </label>
               <div className="relative">
@@ -93,7 +93,7 @@ export default function Login() {
                   placeholder={t('auth.passwordPlaceholder')}
                   disabled={loading}
                   minLength={6}
-                  className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 disabled:cursor-not-allowed text-sm sm:text-base"
+                  className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 border-2 border-gray-200 dark:border-gray-600 rounded-lg sm:rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 dark:disabled:bg-gray-700 disabled:cursor-not-allowed text-sm sm:text-base bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 />
               </div>
             </div>
@@ -118,12 +118,12 @@ export default function Login() {
           </form>
 
           {/* Footer - Mobile Optimized */}
-          <div className="text-center pt-3 sm:pt-4 border-t border-gray-200">
-            <p className="text-gray-600 text-xs sm:text-sm">
+          <div className="text-center pt-3 sm:pt-4 border-t border-gray-200 dark:border-gray-600">
+            <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
               {t('auth.dontHaveAccount')}{' '}
               <Link
                 to="/register"
-                className="font-semibold text-indigo-600 hover:text-purple-600 transition-colors duration-200"
+                className="font-semibold text-indigo-600 dark:text-indigo-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
               >
                 {t('auth.registerHere')}
               </Link>

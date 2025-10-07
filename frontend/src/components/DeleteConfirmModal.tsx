@@ -27,16 +27,16 @@ export default function DeleteConfirmModal({
 
       {/* Modal */}
       <div className="flex min-h-screen items-center justify-center p-4">
-        <div className="relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white/95 backdrop-blur-lg p-6 shadow-2xl transition-all border border-white/20">
+        <div className="relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg p-6 shadow-2xl transition-all border border-white/20 dark:border-gray-700/20">
           {/* Icon */}
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-red-100 mb-4">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/20 mb-4">
             <span className="text-3xl">🗑️</span>
           </div>
 
           {/* Content */}
           <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">{title}</h3>
-            <p className="text-gray-600">{message}</p>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">{title}</h3>
+            <p className="text-gray-600 dark:text-gray-400">{message}</p>
           </div>
 
           {/* Actions */}
@@ -45,7 +45,7 @@ export default function DeleteConfirmModal({
               type="button"
               onClick={onClose}
               disabled={loading}
-              className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl font-semibold text-gray-700 hover:bg-gray-50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Cancel
             </button>
