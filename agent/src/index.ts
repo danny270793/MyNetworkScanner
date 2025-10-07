@@ -53,6 +53,7 @@ async function main() {
         } else {
             console.log('\n⚠️  No devices discovered in this scan');
         }
+        console.log(`Scan completed at ${new Date().toISOString()}`);
         
     } catch (error) {
         console.error('❌ Error:', error instanceof Error ? error.message : error);
