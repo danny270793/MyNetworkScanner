@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { getNetworks, createNetwork, updateNetwork, deleteNetwork, type Network } from '../lib/networks';
 import NetworkModal from '../components/NetworkModal';
@@ -8,7 +7,6 @@ import DeleteConfirmModal from '../components/DeleteConfirmModal';
 
 export default function Home() {
   const { t } = useTranslation();
-  const { user } = useAuth();
   const navigate = useNavigate();
   
   const [networks, setNetworks] = useState<Network[]>([]);
