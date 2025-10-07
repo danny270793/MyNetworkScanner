@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">My Network Scanner</string>
+    <string name="title_activity_main">My Network Scanner</string>
+    <string name="package_name">io.github.danny270793.my.networkscanner</string>
+    <string name="custom_url_scheme">io.github.danny270793.my.networkscanner</string>
+</resources>
