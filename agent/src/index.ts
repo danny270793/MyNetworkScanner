@@ -59,6 +59,13 @@ async function main() {
     }
 }
 
+function minutes(minutes: number) {
+    return minutes * 60 * 1000;
+}
+
+const minutesIntervalString: string|undefined = process.env.MINUTES_INTERVAL || '5';
+const minutesInterval: number = parseInt(minutesIntervalString)
+
 setInterval(() => {
     main().catch(console.error);
-}, 5000);
+}, minutes(minutesInterval));
