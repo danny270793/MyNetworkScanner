@@ -1,0 +1,183 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "update": "Update",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "search": "Search",
+    "filter": "Filter",
+    "clear": "Clear",
+    "refresh": "Refresh",
+    "retry": "Retry",
+    "online": "Online",
+    "offline": "Offline",
+    "unknown": "Unknown",
+    "identified": "Identified"
+  },
+  "auth": {
+    "welcomeBack": "Welcome Back",
+    "createAccount": "Create Account",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "email": "Email Address",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "emailPlaceholder": "you@example.com",
+    "passwordPlaceholder": "••••••••",
+    "signInSubtitle": "Sign in to continue to Network Scanner",
+    "signUpSubtitle": "Join Network Scanner today",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "loginHere": "Login here",
+    "registerHere": "Register here",
+    "signingIn": "Signing in...",
+    "creatingAccount": "Creating account...",
+    "accountCreated": "Account created successfully! Check your email to verify your account. Redirecting...",
+    "passwordMismatch": "Passwords do not match",
+    "passwordTooShort": "Password must be at least 6 characters",
+    "minimumCharacters": "Minimum 6 characters"
+  },
+  "navigation": {
+    "networkScanner": "Network Scanner",
+    "myNetworks": "My Networks",
+    "manageNetworks": "Manage your network configurations"
+  },
+  "networks": {
+    "title": "My Networks",
+    "subtitle": "Manage your network configurations",
+    "createNetwork": "Create Network",
+    "createFirstNetwork": "Create Your First Network",
+    "noNetworksYet": "No Networks Yet",
+    "noNetworksDescription": "Get started by creating your first network configuration to begin scanning",
+    "loadingNetworks": "Loading networks...",
+    "networkName": "Network Name",
+    "networkDescription": "Description",
+    "ipRange": "IP Range",
+    "networkNamePlaceholder": "e.g., Home Network, Office WiFi",
+    "networkDescriptionPlaceholder": "Optional description of this network",
+    "ipRangePlaceholder": "e.g., 192.168.1.0/24",
+    "created": "Created",
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteNetwork": "Delete Network",
+    "deleteNetworkConfirm": "Are you sure you want to delete \"{{name}}\"? This action cannot be undone.",
+    "networkCreated": "Network created successfully",
+    "networkUpdated": "Network updated successfully",
+    "networkDeleted": "Network deleted successfully",
+    "failedToLoad": "Failed to load networks",
+    "failedToCreate": "Failed to create network",
+    "failedToUpdate": "Failed to update network",
+    "failedToDelete": "Failed to delete network"
+  },
+  "devices": {
+    "title": "Devices",
+    "subtitle": "All devices connected to this network",
+    "noDevicesFound": "No Devices Found",
+    "noDevicesDescription": "No devices have been scanned on this network yet. Start a network scan to discover devices.",
+    "loadingDevices": "Loading devices...",
+    "deviceName": "Device Name",
+    "deviceBrand": "Brand/Manufacturer",
+    "macAddress": "MAC Address",
+    "ipAddress": "IP Address",
+    "discovered": "Discovered",
+    "lastSeen": "Last Seen",
+    "editDevice": "Edit Device",
+    "deviceNamePlaceholder": "e.g., John's iPhone, Living Room TV",
+    "deviceBrandPlaceholder": "e.g., Apple, Samsung, Dell",
+    "savingChanges": "Saving...",
+    "deviceUpdated": "Device updated successfully",
+    "failedToUpdate": "Failed to update device",
+    "totalDevices": "Total Devices",
+    "onlineDevices": "Online",
+    "offlineDevices": "Offline",
+    "unknownDevices": "Unknown"
+  },
+  "networkDetail": {
+    "title": "Network Details",
+    "backToNetworks": "Back to Networks",
+    "networkInfo": "Network Information",
+    "description": "Description",
+    "statistics": "Statistics",
+    "devices": "Devices"
+  },
+  "errors": {
+    "generic": "An error occurred",
+    "networkError": "Network error occurred",
+    "unauthorized": "Unauthorized access",
+    "forbidden": "Access forbidden",
+    "notFound": "Resource not found",
+    "serverError": "Server error occurred",
+    "validationError": "Validation error",
+    "requiredField": "This field is required",
+    "invalidEmail": "Please enter a valid email address",
+    "invalidPassword": "Password must be at least 6 characters",
+    "passwordsDoNotMatch": "Passwords do not match"
+  },
+  "modals": {
+    "networkModal": {
+      "createTitle": "Create New Network",
+      "editTitle": "Edit Network",
+      "nameLabel": "Network Name",
+      "descriptionLabel": "Description",
+      "ipRangeLabel": "IP Range",
+      "namePlaceholder": "e.g., Home Network, Office WiFi",
+      "descriptionPlaceholder": "Optional description of this network",
+      "ipRangePlaceholder": "e.g., 192.168.1.0/24"
+    },
+    "deviceModal": {
+      "editTitle": "Edit Device",
+      "nameLabel": "Device Name",
+      "brandLabel": "Brand/Manufacturer",
+      "namePlaceholder": "e.g., John's iPhone, Living Room TV",
+      "brandPlaceholder": "e.g., Apple, Samsung, Dell"
+    },
+    "deleteModal": {
+      "title": "Confirm Delete",
+      "message": "Are you sure you want to delete this item? This action cannot be undone.",
+      "deleteButton": "Delete",
+      "cancelButton": "Cancel"
+    }
+  },
+  "status": {
+    "online": "🟢 Online",
+    "offline": "⚫ Offline",
+    "identified": "Identified",
+    "unknown": "Unknown"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": {
+      "title": "Language",
+      "description": "Choose your preferred language for the interface",
+      "currentLanguage": "Current Language",
+      "changeLanguage": "Click to change language"
+    },
+    "account": {
+      "title": "Account Information",
+      "description": "Your account details and information",
+      "email": "Email Address",
+      "userId": "User ID"
+    },
+    "app": {
+      "title": "Application Information",
+      "description": "Information about this application",
+      "name": "Application Name",
+      "version": "Version"
+    }
+  }
+}

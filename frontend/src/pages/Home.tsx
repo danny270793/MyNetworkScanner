@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { getNetworks, createNetwork, updateNetwork, deleteNetwork, type Network } from '../lib/networks';
@@ -6,7 +7,8 @@ import NetworkModal from '../components/NetworkModal';
 import DeleteConfirmModal from '../components/DeleteConfirmModal';
 
 export default function Home() {
-  const { user, signOut } = useAuth();
+  const { t } = useTranslation();
+  const { user } = useAuth();
   const navigate = useNavigate();
   
   const [networks, setNetworks] = useState<Network[]>([]);
@@ -21,10 +23,6 @@ export default function Home() {
   const [networkToDelete, setNetworkToDelete] = useState<Network | null>(null);
   const [deleting, setDeleting] = useState(false);
 
-  const handleSignOut = async () => {
-    await signOut();
-    navigate('/login');
-  };
 
   const loadNetworks = async () => {
     try {
@@ -99,18 +97,22 @@ export default function Home() {
                 Network Scanner
               </h1>
             </div>
-            <div className="flex items-center space-x-4">
-              <div className="hidden sm:flex items-center space-x-2 bg-gray-100 rounded-lg px-4 py-2">
-                <span className="text-gray-400">👤</span>
-                <span className="text-sm font-medium text-gray-700">{user?.email}</span>
-              </div>
-              <button
-                onClick={handleSignOut}
-                className="bg-gradient-to-r from-red-500 to-pink-500 text-white font-medium px-4 py-2 rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
-              >
-                Sign Out
-              </button>
-            </div>
+                   <div className="flex items-center space-x-4">
+                    <div className="hidden sm:flex items-center space-x-2 bg-gray-100 rounded-lg px-4 py-2">
+                       <span className="text-gray-400">👤</span>
+                       <span className="text-sm font-medium text-gray-700">{user?.email}</span>
+                     </div>
+                     <button
+                       onClick={() => navigate('/settings')}
+                       className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all duration-200"
+                       title={t('settings.title')}
+                     >
+                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                       </svg>
+                     </button>
+                   </div>
           </div>
         </div>
       </nav>
@@ -119,16 +121,16 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Header Section */}
         <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-4xl font-bold text-gray-900">My Networks 🌐</h2>
-            <p className="text-gray-600 mt-2">Manage your network configurations</p>
-          </div>
+                 <div>
+                   <h2 className="text-4xl font-bold text-gray-900">{t('networks.title')} 🌐</h2>
+                   <p className="text-gray-600 mt-2">{t('networks.subtitle')}</p>
+                 </div>
           <button
             onClick={handleCreateClick}
             className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center space-x-2"
           >
             <span className="text-xl">➕</span>
-            <span>Create Network</span>
+            <span>{t('networks.createNetwork')}</span>
           </button>
         </div>
 

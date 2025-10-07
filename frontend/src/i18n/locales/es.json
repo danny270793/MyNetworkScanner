@@ -1,0 +1,183 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "update": "Actualizar",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "confirm": "Confirmar",
+    "yes": "Sí",
+    "no": "No",
+    "ok": "OK",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "clear": "Limpiar",
+    "refresh": "Actualizar",
+    "retry": "Reintentar",
+    "online": "En línea",
+    "offline": "Desconectado",
+    "unknown": "Desconocido",
+    "identified": "Identificado"
+  },
+  "auth": {
+    "welcomeBack": "Bienvenido de nuevo",
+    "createAccount": "Crear cuenta",
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "signOut": "Cerrar sesión",
+    "email": "Dirección de correo",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "passwordPlaceholder": "••••••••",
+    "signInSubtitle": "Inicia sesión para continuar al Escáner de Red",
+    "signUpSubtitle": "Únete al Escáner de Red hoy",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "dontHaveAccount": "¿No tienes una cuenta?",
+    "loginHere": "Inicia sesión aquí",
+    "registerHere": "Regístrate aquí",
+    "signingIn": "Iniciando sesión...",
+    "creatingAccount": "Creando cuenta...",
+    "accountCreated": "¡Cuenta creada exitosamente! Revisa tu correo para verificar tu cuenta. Redirigiendo...",
+    "passwordMismatch": "Las contraseñas no coinciden",
+    "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
+    "minimumCharacters": "Mínimo 6 caracteres"
+  },
+  "navigation": {
+    "networkScanner": "Escáner de Red",
+    "myNetworks": "Mis Redes",
+    "manageNetworks": "Gestiona tus configuraciones de red"
+  },
+  "networks": {
+    "title": "Mis Redes",
+    "subtitle": "Gestiona tus configuraciones de red",
+    "createNetwork": "Crear Red",
+    "createFirstNetwork": "Crea tu Primera Red",
+    "noNetworksYet": "Aún no hay redes",
+    "noNetworksDescription": "Comienza creando tu primera configuración de red para empezar a escanear",
+    "loadingNetworks": "Cargando redes...",
+    "networkName": "Nombre de la Red",
+    "networkDescription": "Descripción",
+    "ipRange": "Rango de IP",
+    "networkNamePlaceholder": "ej., Red Hogar, WiFi Oficina",
+    "networkDescriptionPlaceholder": "Descripción opcional de esta red",
+    "ipRangePlaceholder": "ej., 192.168.1.0/24",
+    "created": "Creado",
+    "view": "Ver",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "deleteNetwork": "Eliminar Red",
+    "deleteNetworkConfirm": "¿Estás seguro de que quieres eliminar \"{{name}}\"? Esta acción no se puede deshacer.",
+    "networkCreated": "Red creada exitosamente",
+    "networkUpdated": "Red actualizada exitosamente",
+    "networkDeleted": "Red eliminada exitosamente",
+    "failedToLoad": "Error al cargar redes",
+    "failedToCreate": "Error al crear red",
+    "failedToUpdate": "Error al actualizar red",
+    "failedToDelete": "Error al eliminar red"
+  },
+  "devices": {
+    "title": "Dispositivos",
+    "subtitle": "Todos los dispositivos conectados a esta red",
+    "noDevicesFound": "No se encontraron dispositivos",
+    "noDevicesDescription": "Aún no se han escaneado dispositivos en esta red. Inicia un escaneo de red para descubrir dispositivos.",
+    "loadingDevices": "Cargando dispositivos...",
+    "deviceName": "Nombre del Dispositivo",
+    "deviceBrand": "Marca/Fabricante",
+    "macAddress": "Dirección MAC",
+    "ipAddress": "Dirección IP",
+    "discovered": "Descubierto",
+    "lastSeen": "Última vez visto",
+    "editDevice": "Editar Dispositivo",
+    "deviceNamePlaceholder": "ej., iPhone de Juan, TV Sala",
+    "deviceBrandPlaceholder": "ej., Apple, Samsung, Dell",
+    "savingChanges": "Guardando...",
+    "deviceUpdated": "Dispositivo actualizado exitosamente",
+    "failedToUpdate": "Error al actualizar dispositivo",
+    "totalDevices": "Total de Dispositivos",
+    "onlineDevices": "En línea",
+    "offlineDevices": "Desconectados",
+    "unknownDevices": "Desconocidos"
+  },
+  "networkDetail": {
+    "title": "Detalles de la Red",
+    "backToNetworks": "Volver a Redes",
+    "networkInfo": "Información de la Red",
+    "description": "Descripción",
+    "statistics": "Estadísticas",
+    "devices": "Dispositivos"
+  },
+  "errors": {
+    "generic": "Ocurrió un error",
+    "networkError": "Error de red",
+    "unauthorized": "Acceso no autorizado",
+    "forbidden": "Acceso prohibido",
+    "notFound": "Recurso no encontrado",
+    "serverError": "Error del servidor",
+    "validationError": "Error de validación",
+    "requiredField": "Este campo es requerido",
+    "invalidEmail": "Por favor ingresa una dirección de correo válida",
+    "invalidPassword": "La contraseña debe tener al menos 6 caracteres",
+    "passwordsDoNotMatch": "Las contraseñas no coinciden"
+  },
+  "modals": {
+    "networkModal": {
+      "createTitle": "Crear Nueva Red",
+      "editTitle": "Editar Red",
+      "nameLabel": "Nombre de la Red",
+      "descriptionLabel": "Descripción",
+      "ipRangeLabel": "Rango de IP",
+      "namePlaceholder": "ej., Red Hogar, WiFi Oficina",
+      "descriptionPlaceholder": "Descripción opcional de esta red",
+      "ipRangePlaceholder": "ej., 192.168.1.0/24"
+    },
+    "deviceModal": {
+      "editTitle": "Editar Dispositivo",
+      "nameLabel": "Nombre del Dispositivo",
+      "brandLabel": "Marca/Fabricante",
+      "namePlaceholder": "ej., iPhone de Juan, TV Sala",
+      "brandPlaceholder": "ej., Apple, Samsung, Dell"
+    },
+    "deleteModal": {
+      "title": "Confirmar Eliminación",
+      "message": "¿Estás seguro de que quieres eliminar este elemento? Esta acción no se puede deshacer.",
+      "deleteButton": "Eliminar",
+      "cancelButton": "Cancelar"
+    }
+  },
+  "status": {
+    "online": "🟢 En línea",
+    "offline": "⚫ Desconectado",
+    "identified": "Identificado",
+    "unknown": "Desconocido"
+  },
+  "settings": {
+    "title": "Configuración",
+    "language": {
+      "title": "Idioma",
+      "description": "Elige tu idioma preferido para la interfaz",
+      "currentLanguage": "Idioma Actual",
+      "changeLanguage": "Haz clic para cambiar idioma"
+    },
+    "account": {
+      "title": "Información de la Cuenta",
+      "description": "Detalles e información de tu cuenta",
+      "email": "Dirección de Correo",
+      "userId": "ID de Usuario"
+    },
+    "app": {
+      "title": "Información de la Aplicación",
+      "description": "Información sobre esta aplicación",
+      "name": "Nombre de la Aplicación",
+      "version": "Versión"
+    }
+  }
+}

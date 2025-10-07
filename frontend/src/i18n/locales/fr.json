@@ -1,0 +1,183 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Créer",
+    "update": "Mettre à jour",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "confirm": "Confirmer",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "OK",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "clear": "Effacer",
+    "refresh": "Actualiser",
+    "retry": "Réessayer",
+    "online": "En ligne",
+    "offline": "Hors ligne",
+    "unknown": "Inconnu",
+    "identified": "Identifié"
+  },
+  "auth": {
+    "welcomeBack": "Bon retour",
+    "createAccount": "Créer un compte",
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "signOut": "Se déconnecter",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "emailPlaceholder": "vous@exemple.com",
+    "passwordPlaceholder": "••••••••",
+    "signInSubtitle": "Connectez-vous pour continuer vers le Scanner de Réseau",
+    "signUpSubtitle": "Rejoignez le Scanner de Réseau aujourd'hui",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "dontHaveAccount": "Vous n'avez pas de compte ?",
+    "loginHere": "Connectez-vous ici",
+    "registerHere": "Inscrivez-vous ici",
+    "signingIn": "Connexion en cours...",
+    "creatingAccount": "Création du compte...",
+    "accountCreated": "Compte créé avec succès ! Vérifiez votre e-mail pour confirmer votre compte. Redirection...",
+    "passwordMismatch": "Les mots de passe ne correspondent pas",
+    "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
+    "minimumCharacters": "Minimum 6 caractères"
+  },
+  "navigation": {
+    "networkScanner": "Scanner de Réseau",
+    "myNetworks": "Mes Réseaux",
+    "manageNetworks": "Gérez vos configurations réseau"
+  },
+  "networks": {
+    "title": "Mes Réseaux",
+    "subtitle": "Gérez vos configurations réseau",
+    "createNetwork": "Créer un Réseau",
+    "createFirstNetwork": "Créez votre Premier Réseau",
+    "noNetworksYet": "Aucun Réseau pour le Moment",
+    "noNetworksDescription": "Commencez par créer votre première configuration réseau pour commencer à scanner",
+    "loadingNetworks": "Chargement des réseaux...",
+    "networkName": "Nom du Réseau",
+    "networkDescription": "Description",
+    "ipRange": "Plage d'IP",
+    "networkNamePlaceholder": "ex., Réseau Domestique, WiFi Bureau",
+    "networkDescriptionPlaceholder": "Description optionnelle de ce réseau",
+    "ipRangePlaceholder": "ex., 192.168.1.0/24",
+    "created": "Créé",
+    "view": "Voir",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "deleteNetwork": "Supprimer le Réseau",
+    "deleteNetworkConfirm": "Êtes-vous sûr de vouloir supprimer \"{{name}}\" ? Cette action ne peut pas être annulée.",
+    "networkCreated": "Réseau créé avec succès",
+    "networkUpdated": "Réseau mis à jour avec succès",
+    "networkDeleted": "Réseau supprimé avec succès",
+    "failedToLoad": "Échec du chargement des réseaux",
+    "failedToCreate": "Échec de la création du réseau",
+    "failedToUpdate": "Échec de la mise à jour du réseau",
+    "failedToDelete": "Échec de la suppression du réseau"
+  },
+  "devices": {
+    "title": "Appareils",
+    "subtitle": "Tous les appareils connectés à ce réseau",
+    "noDevicesFound": "Aucun Appareil Trouvé",
+    "noDevicesDescription": "Aucun appareil n'a encore été scanné sur ce réseau. Commencez un scan réseau pour découvrir des appareils.",
+    "loadingDevices": "Chargement des appareils...",
+    "deviceName": "Nom de l'Appareil",
+    "deviceBrand": "Marque/Fabricant",
+    "macAddress": "Adresse MAC",
+    "ipAddress": "Adresse IP",
+    "discovered": "Découvert",
+    "lastSeen": "Dernière fois vu",
+    "editDevice": "Modifier l'Appareil",
+    "deviceNamePlaceholder": "ex., iPhone de Jean, TV Salon",
+    "deviceBrandPlaceholder": "ex., Apple, Samsung, Dell",
+    "savingChanges": "Enregistrement...",
+    "deviceUpdated": "Appareil mis à jour avec succès",
+    "failedToUpdate": "Échec de la mise à jour de l'appareil",
+    "totalDevices": "Total des Appareils",
+    "onlineDevices": "En ligne",
+    "offlineDevices": "Hors ligne",
+    "unknownDevices": "Inconnus"
+  },
+  "networkDetail": {
+    "title": "Détails du Réseau",
+    "backToNetworks": "Retour aux Réseaux",
+    "networkInfo": "Informations du Réseau",
+    "description": "Description",
+    "statistics": "Statistiques",
+    "devices": "Appareils"
+  },
+  "errors": {
+    "generic": "Une erreur s'est produite",
+    "networkError": "Erreur réseau",
+    "unauthorized": "Accès non autorisé",
+    "forbidden": "Accès interdit",
+    "notFound": "Ressource non trouvée",
+    "serverError": "Erreur serveur",
+    "validationError": "Erreur de validation",
+    "requiredField": "Ce champ est requis",
+    "invalidEmail": "Veuillez entrer une adresse e-mail valide",
+    "invalidPassword": "Le mot de passe doit contenir au moins 6 caractères",
+    "passwordsDoNotMatch": "Les mots de passe ne correspondent pas"
+  },
+  "modals": {
+    "networkModal": {
+      "createTitle": "Créer un Nouveau Réseau",
+      "editTitle": "Modifier le Réseau",
+      "nameLabel": "Nom du Réseau",
+      "descriptionLabel": "Description",
+      "ipRangeLabel": "Plage d'IP",
+      "namePlaceholder": "ex., Réseau Domestique, WiFi Bureau",
+      "descriptionPlaceholder": "Description optionnelle de ce réseau",
+      "ipRangePlaceholder": "ex., 192.168.1.0/24"
+    },
+    "deviceModal": {
+      "editTitle": "Modifier l'Appareil",
+      "nameLabel": "Nom de l'Appareil",
+      "brandLabel": "Marque/Fabricant",
+      "namePlaceholder": "ex., iPhone de Jean, TV Salon",
+      "brandPlaceholder": "ex., Apple, Samsung, Dell"
+    },
+    "deleteModal": {
+      "title": "Confirmer la Suppression",
+      "message": "Êtes-vous sûr de vouloir supprimer cet élément ? Cette action ne peut pas être annulée.",
+      "deleteButton": "Supprimer",
+      "cancelButton": "Annuler"
+    }
+  },
+  "status": {
+    "online": "🟢 En ligne",
+    "offline": "⚫ Hors ligne",
+    "identified": "Identifié",
+    "unknown": "Inconnu"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": {
+      "title": "Langue",
+      "description": "Choisissez votre langue préférée pour l'interface",
+      "currentLanguage": "Langue Actuelle",
+      "changeLanguage": "Cliquez pour changer de langue"
+    },
+    "account": {
+      "title": "Informations du Compte",
+      "description": "Détails et informations de votre compte",
+      "email": "Adresse E-mail",
+      "userId": "ID Utilisateur"
+    },
+    "app": {
+      "title": "Informations de l'Application",
+      "description": "Informations sur cette application",
+      "name": "Nom de l'Application",
+      "version": "Version"
+    }
+  }
+}
