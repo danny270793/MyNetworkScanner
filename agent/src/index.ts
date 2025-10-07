@@ -59,4 +59,6 @@ async function main() {
     }
 }
 
-main().catch(console.error);
+setInterval(() => {
+    main().catch(console.error);
+}, 5000);
