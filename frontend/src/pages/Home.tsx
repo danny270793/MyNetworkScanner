@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { getNetworks, createNetwork, updateNetwork, deleteNetwork, type Network } from '../lib/networks';
 import NetworkModal from '../components/NetworkModal';
@@ -8,7 +7,6 @@ import DeleteConfirmModal from '../components/DeleteConfirmModal';
 
 export default function Home() {
   const { t } = useTranslation();
-  const { user } = useAuth();
   const navigate = useNavigate();
   
   const [networks, setNetworks] = useState<Network[]>([]);
@@ -101,14 +99,6 @@ export default function Home() {
             
             {/* Mobile Actions */}
             <div className="flex items-center space-x-2 sm:space-x-4">
-              {/* User Info - Mobile */}
-              <div className="sm:hidden flex items-center space-x-1 bg-gray-100 dark:bg-gray-700 rounded-lg px-2 py-1.5">
-                <span className="text-gray-400 dark:text-gray-500 text-sm">👤</span>
-                <span className="text-xs font-medium text-gray-700 dark:text-gray-300 truncate max-w-20">
-                  {user?.email?.split('@')[0]}
-                </span>
-              </div>
-              
               {/* Settings Button */}
               <button
                 onClick={() => navigate('/settings')}
