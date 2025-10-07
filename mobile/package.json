@@ -1,0 +1,32 @@
+{
+  "name": "capacitor-app",
+  "version": "1.0.0",
+  "description": "An Amazing Capacitor App",
+  "type": "module",
+  "keywords": [
+    "capacitor",
+    "mobile"
+  ],
+  "scripts": {
+    "web:build": "cd ../frontend && npm run build",
+    "web:build:prod": "cd ../frontend && npm run build:prod",
+    "web:sync": "rm -rf ./www && mkdir ./www && cp -r ../frontend/dist/* ./www",
+    "android:start": "cap sync android && cap run android",
+    "android": "npm run web:build && npm run web:sync && npm run android:start",
+    "android:prod": "npm run web:build:prod && npm run web:sync && npm run android:start",
+    "ios:start": "cap sync ios && cap run ios",
+    "ios": "npm run web:build && npm run web:sync && npm run ios:start",
+    "ios:prod": "npm run web:build:prod && npm run web:sync && npm run ios:start"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/ios": "^7.4.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.2",
+    "typescript": "^5.9.2"
+  },
+  "author": "",
+  "license": "ISC"
+}
