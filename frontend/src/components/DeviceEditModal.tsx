@@ -49,25 +49,25 @@ export default function DeviceEditModal({ isOpen, onClose, onSubmit, device }: D
         onClick={onClose}
       />
 
-      {/* Modal */}
+      {/* Modal - Mobile Optimized */}
       <div className="flex min-h-screen items-center justify-center p-4">
-        <div className="relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white/95 backdrop-blur-lg p-6 shadow-2xl transition-all border border-white/20">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center space-x-3">
-              <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-2 rounded-xl">
-                <span className="text-2xl">💻</span>
+        <div className="relative w-full max-w-md transform overflow-hidden rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-lg p-4 sm:p-6 shadow-2xl transition-all border border-white/20">
+          {/* Header - Mobile Optimized */}
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+              <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-1.5 sm:p-2 rounded-lg sm:rounded-xl">
+                <span className="text-lg sm:text-2xl">💻</span>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900">Edit Device</h3>
-                <p className="text-sm text-gray-600 font-mono">{device.ip}</p>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900">Edit Device</h3>
+                <p className="text-xs sm:text-sm text-gray-600 font-mono truncate">{device.ip}</p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-gray-400 hover:text-gray-600 transition-colors touch-manipulation flex-shrink-0"
             >
-              <span className="text-2xl">✕</span>
+              <span className="text-lg sm:text-2xl">✕</span>
             </button>
           </div>
 
@@ -81,10 +81,10 @@ export default function DeviceEditModal({ isOpen, onClose, onSubmit, device }: D
             </div>
           )}
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <label htmlFor="name" className="block text-sm font-semibold text-gray-700">
+          {/* Form - Mobile Optimized */}
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+            <div className="space-y-1 sm:space-y-2">
+              <label htmlFor="name" className="block text-xs sm:text-sm font-semibold text-gray-700">
                 Device Name
               </label>
               <input
@@ -94,12 +94,12 @@ export default function DeviceEditModal({ isOpen, onClose, onSubmit, device }: D
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g., John's iPhone, Living Room TV"
                 disabled={loading}
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 disabled:cursor-not-allowed"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 disabled:cursor-not-allowed text-sm sm:text-base"
               />
             </div>
 
-            <div className="space-y-2">
-              <label htmlFor="brand" className="block text-sm font-semibold text-gray-700">
+            <div className="space-y-1 sm:space-y-2">
+              <label htmlFor="brand" className="block text-xs sm:text-sm font-semibold text-gray-700">
                 Brand/Manufacturer
               </label>
               <input
@@ -109,38 +109,38 @@ export default function DeviceEditModal({ isOpen, onClose, onSubmit, device }: D
                 onChange={(e) => setBrand(e.target.value)}
                 placeholder="e.g., Apple, Samsung, Dell"
                 disabled={loading}
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 disabled:cursor-not-allowed"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 disabled:cursor-not-allowed text-sm sm:text-base"
               />
             </div>
 
-            {/* Device Info Display */}
-            <div className="bg-gray-50 rounded-xl p-4 space-y-2">
-              <div className="flex justify-between text-sm">
+            {/* Device Info Display - Mobile Optimized */}
+            <div className="bg-gray-50 rounded-lg sm:rounded-xl p-3 sm:p-4 space-y-2">
+              <div className="flex flex-col sm:flex-row sm:justify-between text-xs sm:text-sm space-y-1 sm:space-y-0">
                 <span className="font-semibold text-gray-600">IP Address:</span>
-                <span className="font-mono text-gray-700">{device.ip}</span>
+                <span className="font-mono text-gray-700 break-all">{device.ip}</span>
               </div>
-              <div className="flex justify-between text-sm">
+              <div className="flex flex-col sm:flex-row sm:justify-between text-xs sm:text-sm space-y-1 sm:space-y-0">
                 <span className="font-semibold text-gray-600">MAC Address:</span>
-                <span className="font-mono text-gray-700">{device.mac}</span>
+                <span className="font-mono text-gray-700 break-all">{device.mac}</span>
               </div>
             </div>
 
-            {/* Actions */}
-            <div className="flex space-x-3 pt-4">
+            {/* Actions - Mobile Optimized */}
+            <div className="flex space-x-2 sm:space-x-3 pt-3 sm:pt-4">
               <button
                 type="button"
                 onClick={onClose}
                 disabled={loading}
-                className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl font-semibold text-gray-700 hover:bg-gray-50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl font-semibold text-gray-700 hover:bg-gray-50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation text-sm sm:text-base"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-2.5 sm:py-3 rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none touch-manipulation"
               >
-                {loading ? 'Saving...' : 'Save Changes'}
+                <span className="text-sm sm:text-base">{loading ? 'Saving...' : 'Save Changes'}</span>
               </button>
             </div>
           </form>
