@@ -16,10 +16,12 @@
     "android:prod": "npm run web:build:prod && npm run web:sync && npm run android:start",
     "ios:start": "cap sync ios && cap run ios",
     "ios": "npm run web:build && npm run web:sync && npm run ios:start",
-    "ios:prod": "npm run web:build:prod && npm run web:sync && npm run ios:start"
+    "ios:prod": "npm run web:build:prod && npm run web:sync && npm run ios:start",
+    "icons:generate": "capacitor-assets generate"
   },
   "dependencies": {
     "@capacitor/android": "^7.4.3",
+    "@capacitor/assets": "^3.0.5",
     "@capacitor/core": "^7.4.3",
     "@capacitor/ios": "^7.4.3"
   },
