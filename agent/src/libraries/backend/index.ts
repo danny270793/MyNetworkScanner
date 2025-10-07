@@ -97,7 +97,7 @@ export class Backend {
         console.log(`\n➕ Adding ${newDevices.length} new devices...`);
         
         // Check for existing device names across all networks
-        const devicesWithNames = [];
+        const devicesWithNames: any[] = [];
         for (const device of newDevices) {
             const existingDevice = await this.findDeviceByMac(device.mac);
             if (existingDevice) {
