@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { supabase } from '../lib/supabase';
+import { useAuth } from '../contexts/AuthContext';
 
 interface PasswordChangeModalProps {
   isOpen: boolean;
@@ -68,7 +69,30 @@ const usePasswordChange = () => {
     return true;
   };
 
-  const updatePassword = async () => {
+  const verifyCurrentPassword = async (email: string, password: string) => {
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      // Provide more specific error messages based on the error type
+      if (error.message.includes('Invalid login credentials')) {
+        throw new Error('Current password is incorrect');
+      } else if (error.message.includes('Email not confirmed')) {
+        throw new Error('Please confirm your email before changing password');
+      } else {
+        throw new Error('Failed to verify current password. Please try again.');
+      }
+    }
+  };
+
+  const updatePassword = async (email: string) => {
+    // First verify the current password by attempting to sign in
+    // This ensures the user knows their current password before changing it
+    await verifyCurrentPassword(email, currentPassword);
+
+    // Then update to the new password
     const { error } = await supabase.auth.updateUser({
       password: newPassword
     });
@@ -281,6 +305,7 @@ const PasswordForm = ({
 );
 
 export default function PasswordChangeModal({ isOpen, onClose }: PasswordChangeModalProps) {
+  const { user } = useAuth();
   const {
     currentPassword,
     setCurrentPassword,
@@ -315,9 +340,14 @@ export default function PasswordChangeModal({ isOpen, onClose }: PasswordChangeM
       return;
     }
 
+    if (!user?.email) {
+      setError('User email not found. Please try logging out and back in.');
+      return;
+    }
+
     try {
       setLoading(true);
-      await updatePassword();
+      await updatePassword(user.email);
       setSuccess(true);
       resetForm();
       
