@@ -14,12 +14,15 @@
 
 /* Ensure the app respects iOS safe areas */
 #root {
-  min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport height for better mobile support */
   padding-top: var(--safe-area-inset-top);
   padding-right: var(--safe-area-inset-right);
   padding-bottom: var(--safe-area-inset-bottom);
   padding-left: var(--safe-area-inset-left);
+}
+
+.min-h-screen {
+  min-height: calc(100vh - var(--safe-area-inset-top) - var(--safe-area-inset-bottom));
+  min-height: calc(100dvh - var(--safe-area-inset-top) - var(--safe-area-inset-bottom)); /* Dynamic viewport height for better mobile support */
 }
 
 /* Safe area utility classes */
