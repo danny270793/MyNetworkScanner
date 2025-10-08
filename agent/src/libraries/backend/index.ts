@@ -164,6 +164,19 @@ export class Backend {
         return devicesToOffline.length;
     }
 
+    async getDevices() {
+        const networkId = await this.getNetworkId();
+        
+        const devicesResponse = await this.supabase
+            .from('devices')
+            .select('id, mac, ip, state, name, brand')
+            .eq('network_id', networkId);
+        if(devicesResponse.error) {
+            throw new Error(`Failed to fetch devices: ${devicesResponse.error.message}`);
+        }
+        return devicesResponse.data;
+    }
+
     async uploadDevices(devices: NetworkDevice[]) {
         const networkId = await this.getNetworkId();
         const existingDevices = await this.getExistingDevices(networkId);

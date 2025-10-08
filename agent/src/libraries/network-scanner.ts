@@ -52,10 +52,10 @@ export class NetworkScanner {
             }
         };
         
-        for (let a = startParts[0]!; a <= endParts[0]!; a++) {
-            for (let b = startParts[1]!; b <= endParts[1]!; b++) {
-                for (let c = startParts[2]!; c <= endParts[2]!; c++) {
-                    for (let d = startParts[3]!; d <= endParts[3]!; d++) {
+        for (let a = startParts[0]; a <= endParts[0]; a++) {
+            for (let b = startParts[1]; b <= endParts[1]; b++) {
+                for (let c = startParts[2]; c <= endParts[2]; c++) {
+                    for (let d = startParts[3]; d <= endParts[3]; d++) {
                         addIPIfValid(`${a}.${b}.${c}.${d}`);
                     }
                 }
@@ -68,8 +68,8 @@ export class NetworkScanner {
         const ipParts = ip.split('.').map(Number);
         const maskParts = netmask.split('.').map(Number);
         
-        const networkParts = ipParts.map((part, i) => part & maskParts[i]!);
-        const broadcastParts = ipParts.map((part, i) => part | (~maskParts[i]! & 255));
+        const networkParts = ipParts.map((part, i) => part & maskParts[i]);
+        const broadcastParts = ipParts.map((part, i) => part | (~maskParts[i] & 255));
         
         const start = networkParts.join('.');
         const end = broadcastParts.join('.');
@@ -113,13 +113,28 @@ export class NetworkScanner {
         console.log('🔍 Starting network scan...\n');
         
         // Get local network info
-        const networkInfo: NetworkInfo = NetworkScanner.getLocalNetworkInfo();
+        let networkInfo: NetworkInfo = NetworkScanner.getLocalNetworkInfo();
         
         console.log(`📡 Network Information:`);
         console.log(`   Interface: ${networkInfo.interface}`);
         console.log(`   Local IP: ${networkInfo.ip}`);
         console.log(`   Netmask: ${networkInfo.netmask}`);
         console.log(`   CIDR: ${networkInfo.cidr}\n`);
+
+        // Check if TARGET_NETWORK_IP environment variable is set
+        const targetNetworkIp = process.env.TARGET_NETWORK_IP;
+        if (targetNetworkIp) {
+            console.log(`🎯 Using target network IP from environment: ${targetNetworkIp}`);
+            networkInfo.ip = targetNetworkIp;
+            // Keep the detected netmask or use default
+            if (!process.env.TARGET_NETWORK_MASK) {
+                networkInfo.netmask = '255.255.255.0'; // Default /24 subnet
+            } else {
+                networkInfo.netmask = process.env.TARGET_NETWORK_MASK;
+            }
+            // Recalculate CIDR
+            networkInfo.cidr = `${networkInfo.ip}/${NetworkScanner.calculateCIDR(networkInfo.netmask)}`;
+        }
         
         // Calculate network range
         const range: NetworkRange = NetworkScanner.getNetworkRange(networkInfo.ip, networkInfo.netmask);

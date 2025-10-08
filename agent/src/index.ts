@@ -33,23 +33,26 @@ async function main() {
             console.log('─'.repeat(50));
             
             console.log('\n📱 DISCOVERED DEVICES:');
-            console.log('─'.repeat(40));
+            console.log('─'.repeat(70));
             console.log(
                 'IP Address'.padEnd(18) + 
                 'MAC Address'.padEnd(20) +
-                'Status'.padEnd(10)
+                'Name'.padEnd(40)
             );
-            console.log('─'.repeat(40));
+            console.log('─'.repeat(70));
+
+            const networkDevices = await backend.getDevices();
             
             for (const device of devices) {
+                const networkDevice = networkDevices.find(d => d.mac === device.mac);
                 console.log(
                     device.ip.padEnd(18) +
                     device.mac.padEnd(20) +
-                    '🟢 Online'.padEnd(10)
+                    (networkDevice?.name ?? 'NA').padEnd(40)
                 );
             }
             
-            console.log('─'.repeat(40));
+            console.log('─'.repeat(70));
         } else {
             console.log('\n⚠️  No devices discovered in this scan');
         }
