@@ -15,6 +15,7 @@ services:
       - SUPABASE_URL=${SUPABASE_URL}
       - SUPABASE_KEY=${SUPABASE_KEY}
       - NETWORK_NAME=${NETWORK_NAME}
+      - MINUTES_INTERVAL=${MINUTES_INTERVAL}
     networks:
       - network
     # volumes:

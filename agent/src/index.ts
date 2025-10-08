@@ -53,12 +53,20 @@ async function main() {
         } else {
             console.log('\n⚠️  No devices discovered in this scan');
         }
+        console.log(`Scan completed at ${new Date().toISOString()}`);
         
     } catch (error) {
         console.error('❌ Error:', error instanceof Error ? error.message : error);
     }
 }
 
+function minutes(minutes: number) {
+    return minutes * 60 * 1000;
+}
+
+const minutesIntervalString: string|undefined = process.env.MINUTES_INTERVAL || '5';
+const minutesInterval: number = parseInt(minutesIntervalString)
+
 setInterval(() => {
     main().catch(console.error);
-}, 5000);
+}, minutes(minutesInterval));
