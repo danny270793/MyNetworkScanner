@@ -1,13 +1,16 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import ThemePicker from '../components/ThemePicker';
+import PasswordChangeModal from '../components/PasswordChangeModal';
 
 export default function Settings() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
 
   console.log('⚙️ Settings page loaded');
 
@@ -39,14 +42,6 @@ export default function Settings() {
               <h1 className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent truncate">
                 {t('settings.title')}
               </h1>
-            </div>
-            <div className="flex items-center space-x-2 sm:space-x-4">
-              <div className="sm:hidden flex items-center space-x-1 bg-gray-100 dark:bg-gray-700 rounded-lg px-2 py-1.5">
-                <span className="text-gray-400 dark:text-gray-500 text-sm">👤</span>
-                <span className="text-xs font-medium text-gray-700 dark:text-gray-300 truncate max-w-20">
-                  {user?.email?.split('@')[0]}
-                </span>
-              </div>
             </div>
           </div>
         </div>
@@ -119,6 +114,33 @@ export default function Settings() {
             </div>
           </div>
 
+          {/* Security Settings - Mobile Optimized */}
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100 dark:border-gray-700">
+            <div className="flex items-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
+              <div className="bg-gradient-to-br from-red-500 to-pink-600 p-1.5 sm:p-2 rounded-lg">
+                <span className="text-lg sm:text-xl">🔐</span>
+              </div>
+              <div className="min-w-0 flex-1">
+                <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">Security</h2>
+                <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">Manage your account security settings</p>
+              </div>
+            </div>
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-2 space-y-2 sm:space-y-0">
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium text-gray-700 dark:text-gray-300 text-sm sm:text-base">Password</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Update your account password</p>
+                </div>
+                <button
+                  onClick={() => setIsPasswordModalOpen(true)}
+                  className="flex-shrink-0 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 text-sm"
+                >
+                  Change Password
+                </button>
+              </div>
+            </div>
+          </div>
+
           {/* App Information - Mobile Optimized */}
           <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100 dark:border-gray-700">
             <div className="flex items-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
@@ -152,6 +174,12 @@ export default function Settings() {
           </button>
         </div>
       </main>
+
+      {/* Password Change Modal */}
+      <PasswordChangeModal
+        isOpen={isPasswordModalOpen}
+        onClose={() => setIsPasswordModalOpen(false)}
+      />
     </div>
   );
 }

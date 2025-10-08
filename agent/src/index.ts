@@ -33,30 +33,43 @@ async function main() {
             console.log('─'.repeat(50));
             
             console.log('\n📱 DISCOVERED DEVICES:');
-            console.log('─'.repeat(40));
+            console.log('─'.repeat(70));
             console.log(
                 'IP Address'.padEnd(18) + 
                 'MAC Address'.padEnd(20) +
-                'Status'.padEnd(10)
+                'Name'.padEnd(40)
             );
-            console.log('─'.repeat(40));
+            console.log('─'.repeat(70));
+
+            const networkDevices = await backend.getDevices();
             
             for (const device of devices) {
+                const networkDevice = networkDevices.find(d => d.mac === device.mac);
                 console.log(
                     device.ip.padEnd(18) +
                     device.mac.padEnd(20) +
-                    '🟢 Online'.padEnd(10)
+                    (networkDevice?.name ?? 'NA').padEnd(40)
                 );
             }
             
-            console.log('─'.repeat(40));
+            console.log('─'.repeat(70));
         } else {
             console.log('\n⚠️  No devices discovered in this scan');
         }
+        console.log(`Scan completed at ${new Date().toISOString()}`);
         
     } catch (error) {
         console.error('❌ Error:', error instanceof Error ? error.message : error);
     }
 }
 
-main().catch(console.error);
+function minutes(minutes: number) {
+    return minutes * 60 * 1000;
+}
+
+const minutesIntervalString: string|undefined = process.env.MINUTES_INTERVAL || '5';
+const minutesInterval: number = parseInt(minutesIntervalString)
+
+setInterval(() => {
+    main().catch(console.error);
+}, minutes(minutesInterval));
