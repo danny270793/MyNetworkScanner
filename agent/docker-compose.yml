@@ -16,6 +16,8 @@ services:
       - SUPABASE_KEY=${SUPABASE_KEY}
       - NETWORK_NAME=${NETWORK_NAME}
       - MINUTES_INTERVAL=${MINUTES_INTERVAL}
+      - TARGET_NETWORK_IP=${TARGET_NETWORK_IP}
+      - TARGET_NETWORK_MASK=${TARGET_NETWORK_MASK}
     networks:
       - network
     # volumes:
