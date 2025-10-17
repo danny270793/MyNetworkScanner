@@ -14,6 +14,12 @@ export default defineConfig({
           '75%': { transform: 'translateX(5px)' },
         },
       },
+      spacing: {
+        'safe': 'env(safe-area-inset-top)',
+        'safe-bottom': 'env(safe-area-inset-bottom)',
+        'safe-left': 'env(safe-area-inset-left)',
+        'safe-right': 'env(safe-area-inset-right)',
+      },
     },
   },
   // Ensure dark mode is properly configured
