@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signIn = async (email: string, password: string) => {
     // Check for fake user credentials
-    if (email === 'fake' && password === 'fake') {
+    if (email === 'fake@mail.com' && password === 'password') {
       // Create a mock user object for testing
       const mockUser = {
         id: 'fake-user-id-12345',
