@@ -1,4 +1,5 @@
-import { type Network, type Device } from './networks';
+import { type Network } from './networks';
+import { type Device } from './devices';
 
 // Sample network names and descriptions
 const networkNames = [
@@ -151,7 +152,7 @@ export function generateFakeDevices(networkId: string, ipRange?: string): Device
     });
   }
   
-  return devices.toSorted((a, b) => {
+  return devices.sort((a, b) => {
     // Sort by IP address numerically
     const ipToNumber = (ip: string) => {
       return ip.split('.').reduce((acc, octet) => (acc << 8) + Number.parseInt(octet, 10), 0);

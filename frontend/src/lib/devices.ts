@@ -50,7 +50,7 @@ export async function getDevicesByNetwork(networkId: string): Promise<Device[]> 
   }
 
   // Sort devices by IP address numerically
-  const sortedData = data?.toSorted((a, b) => {
+  const sortedData = data ? [...data].sort((a, b) => {
     if (!a.ip || !b.ip) return 0;
     
     // Convert IP addresses to numbers for proper sorting
@@ -59,7 +59,7 @@ export async function getDevicesByNetwork(networkId: string): Promise<Device[]> 
     };
     
     return ipToNumber(a.ip) - ipToNumber(b.ip);
-  }) || [];
+  }) : [];
 
   return sortedData;
 }
