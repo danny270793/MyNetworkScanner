@@ -302,7 +302,7 @@ const PasswordForm = ({
             <span>{t('passwordChange.updating')}</span>
           </div>
         ) : (
-{t('passwordChange.updatePassword')}
+          <span>{t('passwordChange.updatePassword')}</span>
         )}
       </button>
     </div>
