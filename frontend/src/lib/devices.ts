@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { isFakeUser, generateFakeDevices } from './fakeData';
 
 export interface Device {
   id: string;
@@ -34,6 +35,11 @@ export interface UpdateDeviceDto {
 
 // Get all devices for a specific network
 export async function getDevicesByNetwork(networkId: string): Promise<Device[]> {
+  // Check if using fake user
+  if (isFakeUser()) {
+    return generateFakeDevices(networkId);
+  }
+
   const { data, error } = await supabase
     .from('devices')
     .select('*')
@@ -44,16 +50,16 @@ export async function getDevicesByNetwork(networkId: string): Promise<Device[]> 
   }
 
   // Sort devices by IP address numerically
-  const sortedData = data?.sort((a, b) => {
+  const sortedData = data ? [...data].sort((a, b) => {
     if (!a.ip || !b.ip) return 0;
     
     // Convert IP addresses to numbers for proper sorting
     const ipToNumber = (ip: string) => {
-      return ip.split('.').reduce((acc, octet) => (acc << 8) + parseInt(octet, 10), 0);
+      return ip.split('.').reduce((acc, octet) => (acc << 8) + Number.parseInt(octet, 10), 0);
     };
     
     return ipToNumber(a.ip) - ipToNumber(b.ip);
-  }) || [];
+  }) : [];
 
   return sortedData;
 }

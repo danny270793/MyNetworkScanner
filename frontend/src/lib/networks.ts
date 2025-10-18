@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { isFakeUser, generateFakeNetworks } from './fakeData';
 
 export interface Network {
   id: string;
@@ -24,6 +25,11 @@ export interface UpdateNetworkDto {
 
 // Get all networks for the current user
 export async function getNetworks(): Promise<Network[]> {
+  // Check if using fake user
+  if (isFakeUser()) {
+    return generateFakeNetworks();
+  }
+
   const { data, error } = await supabase
     .from('networks')
     .select('*')
