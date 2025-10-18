@@ -60,39 +60,41 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signIn = async (email: string, password: string) => {
     // Check for fake user credentials
-    if (email === 'fake@mail.com' && password === 'password') {
-      // Create a mock user object for testing
-      const mockUser = {
-        id: 'fake-user-id-12345',
-        email: 'fake@test.com',
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-        aud: 'authenticated',
-        role: 'authenticated',
-        app_metadata: {},
-        user_metadata: {},
-        identities: [],
-        factors: [],
-        is_anonymous: false,
-      } as User;
-
-      const mockSession = {
-        access_token: 'fake-access-token',
-        refresh_token: 'fake-refresh-token',
-        expires_in: 3600,
-        expires_at: Math.floor(Date.now() / 1000) + 3600,
-        token_type: 'bearer',
-        user: mockUser,
-      } as Session;
-
-      setUser(mockUser);
-      setSession(mockSession);
-      setLoading(false);
-      
-      // Set fake user session flag in localStorage
-      localStorage.setItem('fake-user-session', 'true');
-      
-      return { error: null };
+    if(process.env.NODE_ENV === 'development') {
+      if (email === 'fake@mail.com' && password === 'password') {
+        // Create a mock user object for testing
+        const mockUser = {
+          id: 'fake-user-id-12345',
+          email: 'fake@test.com',
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          aud: 'authenticated',
+          role: 'authenticated',
+          app_metadata: {},
+          user_metadata: {},
+          identities: [],
+          factors: [],
+          is_anonymous: false,
+        } as User;
+  
+        const mockSession = {
+          access_token: 'fake-access-token',
+          refresh_token: 'fake-refresh-token',
+          expires_in: 3600,
+          expires_at: Math.floor(Date.now() / 1000) + 3600,
+          token_type: 'bearer',
+          user: mockUser,
+        } as Session;
+  
+        setUser(mockUser);
+        setSession(mockSession);
+        setLoading(false);
+        
+        // Set fake user session flag in localStorage
+        localStorage.setItem('fake-user-session', 'true');
+        
+        return { error: null };
+      }
     }
 
     // Regular Supabase authentication
