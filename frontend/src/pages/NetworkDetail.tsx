@@ -308,7 +308,7 @@ export default function NetworkDetail() {
       {/* Mobile-First Header */}
       <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-gray-200 dark:border-gray-700 shadow-sm fixed top-0 right-0 left-0 z-50">
         <nav style={{ marginTop: 'env(safe-area-inset-top)' }}>
-          <div className="px-4 sm:px-6 lg:px-8" style={{ marginTop: 'calc(env(safe-area-inset-top) - 10px)' }}>
+          <div className="px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-14 sm:h-16">
             <button
               onClick={() => navigate('/')}
@@ -334,7 +334,7 @@ export default function NetworkDetail() {
       </div>
 
       {/* Main Content - Mobile First */}
-      <main className="px-4 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-4 sm:space-y-6">
+      <main className="px-4 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-4 sm:space-y-6" style={{ marginTop: 'calc(env(safe-area-inset-top) - 10px)' }}>
         {/* Network Info Card - Mobile Optimized */}
         {network.description && (
           <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100 dark:border-gray-700">
