@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -27,6 +28,7 @@ interface PasswordFormProps {
 }
 
 const usePasswordChange = () => {
+  const { t } = useTranslation();
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -47,22 +49,22 @@ const usePasswordChange = () => {
 
   const validateForm = () => {
     if (!currentPassword || !newPassword || !confirmPassword) {
-      setError('All fields are required');
+      setError(t('passwordChange.allFieldsRequired'));
       return false;
     }
 
     if (newPassword.length < 6) {
-      setError('New password must be at least 6 characters long');
+      setError(t('passwordChange.passwordTooShort'));
       return false;
     }
 
     if (newPassword !== confirmPassword) {
-      setError('New passwords do not match');
+      setError(t('passwordChange.passwordsDoNotMatch'));
       return false;
     }
 
     if (currentPassword === newPassword) {
-      setError('New password must be different from current password');
+      setError(t('passwordChange.passwordSameAsCurrent'));
       return false;
     }
 
@@ -78,11 +80,11 @@ const usePasswordChange = () => {
     if (error) {
       // Provide more specific error messages based on the error type
       if (error.message.includes('Invalid login credentials')) {
-        throw new Error('Current password is incorrect');
+        throw new Error(t('passwordChange.currentPasswordIncorrect'));
       } else if (error.message.includes('Email not confirmed')) {
-        throw new Error('Please confirm your email before changing password');
+        throw new Error(t('passwordChange.emailNotConfirmed'));
       } else {
-        throw new Error('Failed to verify current password. Please try again.');
+        throw new Error(t('passwordChange.verifyPasswordFailed'));
       }
     }
   };
@@ -144,12 +146,15 @@ const PasswordForm = ({
   error,
   onSubmit,
   onClose
-}: PasswordFormProps) => (
+}: PasswordFormProps) => {
+  const { t } = useTranslation();
+  
+  return (
   <form onSubmit={onSubmit} className="space-y-4 sm:space-y-6">
     {/* Current Password */}
     <div className="space-y-2">
       <label htmlFor="currentPassword" className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
-        Current Password
+        {t('passwordChange.currentPassword')}
       </label>
       <div className="relative">
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -161,7 +166,7 @@ const PasswordForm = ({
           value={currentPassword}
           onChange={(e) => setCurrentPassword(e.target.value)}
           required
-          placeholder="Enter current password"
+          placeholder={t('passwordChange.currentPasswordPlaceholder')}
           disabled={loading}
           className="w-full pl-10 pr-10 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 disabled:bg-gray-50 dark:disabled:bg-gray-700 disabled:cursor-not-allowed text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
         />
@@ -188,7 +193,7 @@ const PasswordForm = ({
     {/* New Password */}
     <div className="space-y-2">
       <label htmlFor="newPassword" className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
-        New Password
+        {t('passwordChange.newPassword')}
       </label>
       <div className="relative">
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -200,7 +205,7 @@ const PasswordForm = ({
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
           required
-          placeholder="Enter new password"
+          placeholder={t('passwordChange.newPasswordPlaceholder')}
           disabled={loading}
           minLength={6}
           className="w-full pl-10 pr-10 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 disabled:bg-gray-50 dark:disabled:bg-gray-700 disabled:cursor-not-allowed text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
@@ -223,13 +228,13 @@ const PasswordForm = ({
           )}
         </button>
       </div>
-      <p className="text-xs text-gray-500 dark:text-gray-400">Minimum 6 characters</p>
+      <p className="text-xs text-gray-500 dark:text-gray-400">{t('passwordChange.minimumCharacters')}</p>
     </div>
 
     {/* Confirm New Password */}
     <div className="space-y-2">
       <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
-        Confirm New Password
+        {t('passwordChange.confirmPassword')}
       </label>
       <div className="relative">
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -241,7 +246,7 @@ const PasswordForm = ({
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
-          placeholder="Confirm new password"
+          placeholder={t('passwordChange.confirmPasswordPlaceholder')}
           disabled={loading}
           minLength={6}
           className="w-full pl-10 pr-10 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 disabled:bg-gray-50 dark:disabled:bg-gray-700 disabled:cursor-not-allowed text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
@@ -284,7 +289,7 @@ const PasswordForm = ({
         disabled={loading}
         className="flex-1 px-4 py-3 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50"
       >
-        Cancel
+{t('common.cancel')}
       </button>
       <button
         type="submit"
@@ -294,17 +299,19 @@ const PasswordForm = ({
         {loading ? (
           <div className="flex items-center justify-center space-x-2">
             <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-            <span>Updating...</span>
+            <span>{t('passwordChange.updating')}</span>
           </div>
         ) : (
-          'Update Password'
+          <span>{t('passwordChange.updatePassword')}</span>
         )}
       </button>
     </div>
   </form>
-);
+  );
+};
 
 export default function PasswordChangeModal({ isOpen, onClose }: PasswordChangeModalProps) {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const {
     currentPassword,
@@ -341,7 +348,7 @@ export default function PasswordChangeModal({ isOpen, onClose }: PasswordChangeM
     }
 
     if (!user?.email) {
-      setError('User email not found. Please try logging out and back in.');
+      setError(t('passwordChange.userEmailNotFound'));
       return;
     }
 
@@ -357,7 +364,7 @@ export default function PasswordChangeModal({ isOpen, onClose }: PasswordChangeM
       }, 2000);
 
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to update password');
+      setError(err instanceof Error ? err.message : t('passwordChange.updatePasswordFailed'));
     } finally {
       setLoading(false);
     }
@@ -382,7 +389,7 @@ export default function PasswordChangeModal({ isOpen, onClose }: PasswordChangeM
               <span className="text-xl">🔐</span>
             </div>
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">
-              Change Password
+              {t('passwordChange.title')}
             </h2>
           </div>
           <button
@@ -404,10 +411,10 @@ export default function PasswordChangeModal({ isOpen, onClose }: PasswordChangeM
                 <span className="text-3xl">✅</span>
               </div>
               <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
-                Password Updated Successfully!
+                {t('passwordChange.passwordUpdatedSuccessfully')}
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
-                Your password has been changed successfully.
+                {t('passwordChange.passwordUpdatedDescription')}
               </p>
             </div>
           ) : (
