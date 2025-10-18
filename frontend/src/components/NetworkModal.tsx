@@ -1,4 +1,5 @@
 import { useState, useEffect, type FormEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import { type Network } from '../lib/networks';
 
 interface NetworkModalProps {
@@ -10,6 +11,7 @@ interface NetworkModalProps {
 }
 
 export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode }: NetworkModalProps) {
+  const { t } = useTranslation();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [ipRange, setIpRange] = useState('');
@@ -38,7 +40,7 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
       await onSubmit({ name, description, ip_range: ipRange });
       onClose();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : t('errors.generic'));
     } finally {
       setLoading(false);
     }
@@ -60,7 +62,7 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              {mode === 'create' ? '📝 Create Network' : '✏️ Edit Network'}
+              {mode === 'create' ? `📝 ${t('modals.networkModal.createTitle')}` : `✏️ ${t('modals.networkModal.editTitle')}`}
             </h3>
             <button
               onClick={onClose}
@@ -84,7 +86,7 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
-                Network Name *
+                {t('modals.networkModal.nameLabel')} *
               </label>
               <input
                 id="name"
@@ -92,7 +94,7 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                placeholder="Home Network"
+                placeholder={t('modals.networkModal.namePlaceholder')}
                 disabled={loading}
                 className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 dark:disabled:bg-gray-700 disabled:cursor-not-allowed bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
@@ -100,13 +102,13 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
 
             <div className="space-y-2">
               <label htmlFor="description" className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
-                Description
+                {t('modals.networkModal.descriptionLabel')}
               </label>
               <textarea
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Optional description of this network"
+                placeholder={t('modals.networkModal.descriptionPlaceholder')}
                 disabled={loading}
                 rows={3}
                 className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 dark:disabled:bg-gray-700 disabled:cursor-not-allowed resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
@@ -115,18 +117,18 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
 
             <div className="space-y-2">
               <label htmlFor="ipRange" className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
-                IP Range
+                {t('modals.networkModal.ipRangeLabel')}
               </label>
               <input
                 id="ipRange"
                 type="text"
                 value={ipRange}
                 onChange={(e) => setIpRange(e.target.value)}
-                placeholder="192.168.1.0/24"
+                placeholder={t('modals.networkModal.ipRangePlaceholder')}
                 disabled={loading}
                 className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 disabled:bg-gray-50 dark:disabled:bg-gray-700 disabled:cursor-not-allowed bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
-              <p className="text-xs text-gray-500 dark:text-gray-400">Example: 192.168.1.0/24</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{t('modals.networkModal.ipRangePlaceholder')}</p>
             </div>
 
             {/* Actions */}
@@ -137,14 +139,14 @@ export default function NetworkModal({ isOpen, onClose, onSubmit, network, mode 
                 disabled={loading}
                 className="flex-1 px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Cancel
+{t('common.cancel')}
               </button>
               <button
                 type="submit"
                 disabled={loading}
                 className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
-                {loading ? 'Saving...' : mode === 'create' ? 'Create' : 'Update'}
+                {loading ? t('devices.savingChanges') : mode === 'create' ? t('common.create') : t('common.update')}
               </button>
             </div>
           </form>
