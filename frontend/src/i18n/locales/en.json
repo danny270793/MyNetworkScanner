@@ -179,5 +179,28 @@
       "name": "Application Name",
       "version": "Version"
     }
+  },
+  "passwordChange": {
+    "title": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm New Password",
+    "currentPasswordPlaceholder": "Enter current password",
+    "newPasswordPlaceholder": "Enter new password",
+    "confirmPasswordPlaceholder": "Confirm new password",
+    "minimumCharacters": "Minimum 6 characters",
+    "allFieldsRequired": "All fields are required",
+    "passwordTooShort": "New password must be at least 6 characters long",
+    "passwordsDoNotMatch": "New passwords do not match",
+    "passwordSameAsCurrent": "New password must be different from current password",
+    "currentPasswordIncorrect": "Current password is incorrect",
+    "emailNotConfirmed": "Please confirm your email before changing password",
+    "verifyPasswordFailed": "Failed to verify current password. Please try again.",
+    "userEmailNotFound": "User email not found. Please try logging out and back in.",
+    "updatePasswordFailed": "Failed to update password",
+    "updating": "Updating...",
+    "updatePassword": "Update Password",
+    "passwordUpdatedSuccessfully": "Password Updated Successfully!",
+    "passwordUpdatedDescription": "Your password has been changed successfully."
   }
 }
