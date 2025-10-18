@@ -306,9 +306,10 @@ export default function NetworkDetail() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Mobile-First Header */}
-      <nav className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 shadow-sm">
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14 sm:h-16">
+      <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-gray-200 dark:border-gray-700 shadow-sm fixed top-0 right-0 left-0 z-50">
+        <nav style={{ marginTop: 'env(safe-area-inset-top)' }}>
+          <div className="px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-14 sm:h-16">
             <button
               onClick={() => navigate('/')}
               className="flex items-center space-x-1 sm:space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors touch-manipulation"
@@ -330,9 +331,10 @@ export default function NetworkDetail() {
           </div>
         </div>
       </nav>
+      </div>
 
       {/* Main Content - Mobile First */}
-      <main className="px-4 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-4 sm:space-y-6">
+      <main className="px-4 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-4 sm:space-y-6" style={{ marginTop: 'calc(env(safe-area-inset-top) - 10px)' }}>
         {/* Network Info Card - Mobile Optimized */}
         {network.description && (
           <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100 dark:border-gray-700">
