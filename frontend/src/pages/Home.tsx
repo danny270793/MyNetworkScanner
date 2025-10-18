@@ -86,7 +86,7 @@ export default function Home() {
       {/* Mobile-First Navigation Bar */}
       <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-gray-200 dark:border-gray-700 shadow-sm fixed top-0 right-0 left-0 z-50">
         <nav style={{ marginTop: 'env(safe-area-inset-top)' }}>
-          <div className="px-4 sm:px-6 lg:px-8" style={{ marginTop: 'calc(env(safe-area-inset-top) - 10px)' }}>
+          <div className="px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo and Title */}
             <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
@@ -118,7 +118,7 @@ export default function Home() {
       </div>
 
       {/* Main Content - Mobile First */}
-      <main className="px-4 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-6 sm:space-y-8">
+      <main className="px-4 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-6 sm:space-y-8" style={{ marginTop: 'calc(env(safe-area-inset-top) - 10px)' }}>
         {/* Header Section - Mobile Optimized */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
           <div className="flex-1 min-w-0">
